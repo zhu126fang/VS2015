@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
+using System.IO;
+using System.Reflection;
+
 namespace Excel_Sheet
 {
     public partial class Form1 : Form
@@ -15,6 +20,16 @@ namespace Excel_Sheet
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+            Workbooks wbks = app.Workbooks;
+            _Workbook _wbk = wbks.Add(true);
+
+            app.Visible = true;
+
         }
     }
 }
