@@ -28,12 +28,12 @@ namespace Excel_Open
             Workbooks wbks = app.Workbooks;
             try
             {
-                _Workbook _wbk = wbks.Open(@"D:\Users\Administrator\Documents\Visual Studio 2015\Projects\Excel_Demo\Demo.xls");
+                _Workbook _wbk = wbks.Add(true);
                 app.Visible = true;
             }
             catch
             {
-                MessageBox.Show("打开文件失败");
+                MessageBox.Show("新建文件失败");
             }
         }
     }
