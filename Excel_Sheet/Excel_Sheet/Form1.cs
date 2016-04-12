@@ -77,8 +77,13 @@ namespace Excel_Sheet
         private void button4_Click(object sender, EventArgs e)
         {
 
-            for (int i = 1; i < 10; i++) { _wsh.Cells[i, 1] = i; }
+            for (int i = 1; i < 10; i++)
+            {
+                _wsh.Cells[i 1] = i;
+                _wsh.Cells[1, 1].Interior.ColorIndex = 3;
+            }
 
+            //行列宽度
             ((Range)_wsh.Rows[3, Missing.Value]).RowHeight = 5;
             ((Range)_wsh.Columns[3, Missing.Value]).ColumnWidth = 20;
 
