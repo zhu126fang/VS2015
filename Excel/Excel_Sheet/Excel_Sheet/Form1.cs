@@ -19,6 +19,7 @@ namespace Excel_Sheet
     public partial class Form1 : Form
     {
         //全局静态变量
+        //Application有两个命名空间都用到，因此需要明确命名空间。
         public static Microsoft.Office.Interop.Excel.Application app = null;
         public static Workbooks wkbs=null;
         public static _Workbook _wkb=null;
@@ -79,7 +80,7 @@ namespace Excel_Sheet
 
             for (int i = 1; i < 10; i++)
             {
-                _wsh.Cells[i 1] = i;
+                _wsh.Cells[i,1] = i;
                 _wsh.Cells[1, 1].Interior.ColorIndex = 3;
             }
 
