@@ -1,0 +1,2 @@
+=CoDeSysHMI|'C:\Windows\Logs\bin\HX2B\HX2B.pro'!'Rec_Value[1]'
+='MT4'|'BID'!USDCHF

@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace QihooPost
+{
+    /// <summary>
+    /// 奇虎登录
+    /// </summary>
+    public class QihooLogin
+    {
+        /// <summary>
+        /// 奇虎登录
+        /// </summary>
+        /// <param name="QihooInf">用户信息</param>
+        /// <returns></returns>
+        public bool Login(QihooUserInfo QihooInf,out string Res)
+        {
+            Res = "";
+            QihooInf.QihooCookie = new QihooCookie();
+            string b = "https://login.360.cn/?o=sso&m=getToken&func=QHPass.loginUtils.tokenCallback&userName=" + QihooInf.LoginName + "&rand=0.3756105461873223";
+            Res = WebTool.doGet("http://wenda.qihoo.com/", QihooInf.QihooCookie);
+            Res = WebTool.doGet(b, QihooInf.QihooCookie);
+            //获取token
+            string Token = Res.Substring(Res.IndexOf("token\":\"") + 8, Res.IndexOf("\"}") - 8 - Res.IndexOf("token\":\""));
+                      //https://login.360.cn/?o=sso&m=login&from=i360&rtype=data&func=QHPass.loginUtils.loginCallback&userName=wawd74520&pwdmethod=1&password=a8b706802541a812404a9881a318f476&isKeepAlive=1&token=8bf39c780038518b&captFlag=&r=1356762888357&callback=QiUserJsonP1356762834297
+            string c = "https://login.360.cn/?o=sso&m=login&from=i360&rtype=data&func=QHPass.loginUtils.loginCallback&userName=" + QihooInf.LoginName + "&pwdmethod=1&password=" + Md5Fun(QihooInf.LoginPass) + "&isKeepAlive=1&token=" + Token + "&captFlag=&r=1353660413067&callback=QiUserJsonP1356762834297";
+            Res = WebTool.doGet(c, QihooInf.QihooCookie);
+            //获取s
+            string S_yo = Res.Substring(Res.IndexOf("s\":\"") + 4, Res.IndexOf("\",\"userinfo") - 4 - Res.IndexOf("s\":\""));
+                      //http://rd.login.so.com/?o=sso&m=setcookie&func=QHPass.loginUtils.setCookieCallback&s=e%28.i%28Z%3DX%7Dk%5B9IVkvS%7BXT%60%5CZTF_.%7B%7D9%60GeR9%3D%7CmMt%4080%7BCABY%7B%3AFW%24%3BT9tP%3DOHMV%5BKmct%24%3B%28%3E%25%2Bjg%3EO%2A%26%5CJB%25Mn%7B.%3EWbEPegchHHJlnw%40%28Lc%223e8P%5D%2BeQL%20.%3E%3E%3Dkv%5DD%7ER%3B3%5E%29b%28Bq%3B%22J0RY%5C%5D6kaab%3EiN%24p%40p%2A%60rMkV%29bMzF%5By%7D%29I%7C%40noVk%3CZrY%20v_B%3Dq2zm%3E4B%24%29C%2Fp%3Bm1&callback=QiUserJsonP1356762834299
+            string d = "http://rd.login.so.com/?o=sso&m=setcookie&func=QHPass.loginUtils.setCookieCallback&s=" + S_yo + "&callback=QiUserJsonP1356762834299";
+            Res = WebTool.doGet(d, QihooInf.QihooCookie);
+            //Res = WebTool.doGet("http://wenda.qihoo.com/user/", yc);
+            if (Res.Contains("errno\":0"))
+                return true;
+            else
+                return false;
+        }
+
+        private string Md5Fun(string PassStr)
+        {
+            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(PassStr, "MD5").ToLower();
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Net;
+
+namespace QihooPost
+{
+    public class QihooPostNews
+    {
+        public string PostFun(QihooUserInfo Qu,string ContentStr)
+        {
+            string cid = WebTool.doGet("http://wenda.so.com/engine/getCate?title=" + ChEncodeUrl(ContentStr), Qu.QihooCookie);
+            try
+            {
+                cid = cid.Substring(cid.IndexOf("cid\":") + 5, cid.IndexOf(",\"name\"") - 5 - cid.IndexOf("cid\":"));
+            }
+            catch { cid = "573"; }
+            cid = "573";
+            string TokenCode = WebTool.doGet("http://wenda.so.com/index/getTokenCode", Qu.QihooCookie);
+            byte[] PostData = System.Text.Encoding.UTF8.GetBytes("ask_title=" + ChEncodeUrl(ContentStr) + "&cid=" + cid + "&verify=" + TokenCode + "&coin=0");
+            InfoData inf = new InfoData();
+            string Res = WebTool.doPost("http://wenda.so.com/submit/ask", PostData, Qu.QihooCookie, "utf-8", "http://wenda.so.com/index/ask/?q=", 1000, "http://" + inf.GetProxy());
+            return Res;
+        }
+
+        private string getCookieValue(string cookieName, string url, QihooCookie bCookie)
+        {
+            Uri uri = new Uri(url);
+            CookieCollection cc = bCookie.getcookie().GetCookies(uri);
+            for (int i = 0, len = cc.Count; i < len; i++)
+            {
+                if (cc[i].Name.Equals(cookieName))
+                    return cc[i].Value;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 将string转换成URLstring
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string ChEncodeUrl(string str)
+        {
+            string ToUpperStr = System.Web.HttpUtility.UrlEncode(str);
+            ToUpperStr = ToUpperStr.ToUpper();
+            return ToUpperStr;
+        }
+
+        /// <summary>
+        /// 将string转换成URLstring
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string ChEncodeUrl(string str, Encoding ec)
+        {
+            string ToUpperStr = System.Web.HttpUtility.UrlEncode(str, ec);
+            ToUpperStr = ToUpperStr.ToUpper();
+            return ToUpperStr;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

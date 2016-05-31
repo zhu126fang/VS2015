@@ -1,0 +1,96 @@
+ //数据库
+    public class GF_DA
+    {
+        /// <summary>
+        /// 执行SQL语句 sConnStr 连接字符串,sql执行的sql命令 返回第一行第一列
+        /// </summary>
+        /// <param name="sConnStr"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static object ExecSQL(string sConnStr, string sql)
+        {
+            using (SqlConnection conn = new SqlConnection(sConnStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    try
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.CommandText = sql;
+                        return cmd.ExecuteScalar();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+ 
+            }
+        }
+ 
+        /// <summary>
+        /// 执行SQL数组  
+        /// </summary>
+        /// <param name="sConnStr"></param>
+        /// <param name="alSql"></param>
+        /// <param name="iLen"></param>
+        public static void ExecSQL(string sConnStr, ArrayList alSql, int iLen)
+        {
+            using (SqlConnection conn = new SqlConnection(sConnStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    try
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
+                        for (int i = 0; i < alSql.Count; i++)
+                        {
+                            cmd.CommandText = alSql[i].ToString();
+                            cmd.ExecuteNonQuery();
+                             
+                        }
+                    }
+                    catch
+                    {
+ 
+                    }
+                }
+ 
+            }
+        }
+ 
+        /// <summary>
+        /// 填充数据 返回DataTable
+        /// </summary>
+        /// <param name="sConnStr"></param>
+        /// <param name="sql"></param>
+        /// <param name="sTableName"></param>
+        /// <returns></returns>
+        public static DataTable DataFill(string sConnStr, string sql, string sTableName)
+        {
+            using (SqlConnection conn = new SqlConnection(sConnStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    DataSet ds = new DataSet();
+                    try
+                    {
+                        conn.Open();
+                        cmd.Connection = conn;
+                        cmd.CommandText = sql;
+                        SqlDataAdapter ap = new SqlDataAdapter(cmd);
+                        ap.Fill(ds, sTableName);
+                        return ds.Tables[0];
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+ 
+ 
+            }
+        }
+    }

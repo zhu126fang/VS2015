@@ -1,0 +1,153 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
+using mshtml;
+using SHDocVw;
+
+namespace WebClick_Tool
+{
+    /// <summary>
+    /// IE浏览器操作
+    /// </summary>
+    public class IETool
+    {
+        /// <summary>
+        /// IE句柄
+        /// </summary>
+        public int IEHandle { get; set; }
+        /// <summary>
+        /// 浏览器
+        /// </summary>
+        public IWebBrowser2 IEBrowser { get; set; }
+        /// <summary>
+        /// 当前页面Document
+        /// </summary>
+        public HTMLDocumentClass Document { get; set; }
+        /// <summary>
+        /// 浏览器标头高度
+        /// </summary>
+        public int BrowserH { get; set; }
+        /// <summary>
+        /// 初始化是否成功
+        /// </summary>
+        public bool Suc { get; set; }
+        /// <summary>
+        /// 头部标题
+        /// </summary>
+        public string HeadTitle { get; set; }
+        /// <summary>
+        /// 失败头部标题
+        /// </summary>
+        public string BadHeadTitle { get; set; }
+        /// <summary>
+        /// 浏览器高度
+        /// </summary>
+        public int HeighBro { get; set; }
+
+        public IETool(string HeadTitleO,string BadTitle)
+        {
+            HeadTitle = HeadTitleO;
+            BadHeadTitle = BadTitle;
+            HeighBro = -1;
+            if (GetHandleOfBrowser())
+                Suc = true;
+            else
+                Suc = false;
+            try
+            {
+                GetHtml(false);
+            }
+            catch { }
+        }
+        #region 系统API
+        /// <summary>
+        /// 找窗口句柄
+        /// </summary>
+        /// <param name="lpClassName"></param>
+        /// <param name="lpWindowName"></param>
+        /// <returns></returns>
+        [DllImport("user32", EntryPoint = "FindWindow")]
+        public static extern int FindWindowA(string lpClassName, string lpWindowName);
+        /// <summary>
+        /// 窗体发送消息
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="Msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        #endregion
+        /// <summary>
+        /// 获取IE句柄
+        /// </summary>
+        /// <returns></returns>
+        private bool GetHandleOfBrowser()
+        {
+            IEHandle = FindWindowA("IEFrame", null);
+            if (IEHandle == 0)
+                return false;
+            else
+                return true;
+        }
+        /// <summary>
+        /// IE窗体最大化
+        /// </summary>
+        public void SetMaxStyle(int Handle)
+        {
+            SendMessage(new IntPtr((Handle != 0 ? Handle : IEHandle)), 274, 61488, 0);
+        }
+        /// <summary>
+        /// 获取源代码
+        /// </summary>
+        /// <returns></returns>
+        public string GetHtml(bool Sacn)
+        {
+            string TempStr = "";
+            //初始化所有IE窗口 
+            IShellWindows sw = new ShellWindowsClass();
+            for (int i = sw.Count - 1; i >= 0; i--)
+            {
+                //得到每一个IE的 IWebBrowser2 对象 
+                IWebBrowser2 iwb2 = sw.Item(i) as IWebBrowser2;
+                //比对 得到的 句柄是否符合查找的窗口句柄 
+                if (iwb2!=null&&iwb2.HWND == IEHandle)
+                {
+                    Document = (HTMLDocumentClass)iwb2.Document;
+                    if(Sacn)
+                        if ((Document == null || Document.title == null || Document.title != HeadTitle) && !Document.title.Contains(BadHeadTitle))
+                        {
+                            continue;
+                        }
+
+                    iwb2.StatusBar = false;//状态栏
+                    SendMessage(new IntPtr(iwb2.HWND), 274, 61488, 0);
+                    if (Document == null)
+                        return "";
+                    if (Document.title == "百度一下，你就知道" || Document.title == "360搜索 - 干净、安全、可信任的搜索引擎")
+                        TempStr = "<!doctype html>" + ((HTMLDocumentClass)iwb2.Document).documentElement.outerHTML;
+                    else
+                        TempStr = ((HTMLDocumentClass)iwb2.Document).documentElement.outerHTML;
+                    try
+                    {
+                        HeighBro = ((IHTMLElement2)Document.body).scrollHeight;
+                    }
+                    catch { }
+                    break;
+                }
+            }
+            return TempStr;
+        }
+        /// <summary>
+        /// 根据元素信息获取坐标
+        /// </summary>
+        /// <param name="Id">元素ID</param>
+        /// <param name="TextStr">元素内容 格式: input|登 录</param>
+        /// <returns></returns>
+ 	///这个比较难。。。就不公布了。。。嘿嘿。。。如果想要就顶贴吧
+    }
+}

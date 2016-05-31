@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Microsoft.Win32; //对注册表操作
+using System.Collections; //使用Arraylist
+using System.Security.Cryptography;//加密解密
+using System.IO;    //文件操作
+using System.Runtime.InteropServices;//调用DLL DllImport
+using System.Management;  //获取硬件信息
+using System.Net;       //获取IP地址是用到
+using System.Drawing;   //image 
+using System.Net.NetworkInformation;    //ping 用到
+using System.Text.RegularExpressions;   //正则
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.VisualBasic;   //简体转繁体时用到
+using System.Web;       //html UrlEncode
+ 
+ 
+//注册表操作
+    public class GF_RegReadWrite
+    {
+        
+        /// <summary>
+        /// 读取路径为keypath，键名为keyname的注册表键值，缺省返回def
+        /// </summary>
+        /// <param name="rootkey"></param>
+        /// <param name="keypath">路径</param>
+        /// <param name="keyname">键名</param>
+        /// <param name="rtn">默认为null</param>
+        /// <returns></returns>        
+        static public bool GetRegVal(RegistryKey rootkey, string keypath, string keyname, out string rtn)
+        {
+            rtn = "";
+            try
+            {
+                RegistryKey key = rootkey.OpenSubKey(keypath);
+                rtn = key.GetValue(keyname).ToString();
+                key.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+      
+        /// <summary>
+        /// 设置路径为keypath，键名为keyname的注册表键值为keyval
+        /// </summary>
+        /// <param name="rootkey"></param>
+        /// <param name="keypath"></param>
+        /// <param name="keyname"></param>
+        /// <param name="keyval"></param>
+        /// <returns></returns>
+        static public bool SetRegVal(RegistryKey rootkey, string keypath, string keyname, string keyval)
+        {
+            try
+            {
+                RegistryKey key = rootkey.OpenSubKey(keypath, true);
+                if (key == null)
+                    key = rootkey.CreateSubKey(keypath);
+                key.SetValue(keyname, (object)keyval);
+                key.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+ 
+        /// 创建路径为keypath的键
+        private RegistryKey CreateRegKey(RegistryKey rootkey, string keypath)
+        {
+            try
+            {
+                return rootkey.CreateSubKey(keypath);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        /// 删除路径为keypath的子项
+        private bool DelRegSubKey(RegistryKey rootkey, string keypath)
+        {
+            try
+            {
+                rootkey.DeleteSubKey(keypath);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        /// 删除路径为keypath的子项及其附属子项
+        private bool DelRegSubKeyTree(RegistryKey rootkey, string keypath)
+        {
+            try
+            {
+                rootkey.DeleteSubKeyTree(keypath);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        /// 删除路径为keypath下键名为keyname的键值
+        private bool DelRegKeyVal(RegistryKey rootkey, string keypath, string keyname)
+        {
+            try
+            {
+                RegistryKey key = rootkey.OpenSubKey(keypath, true);
+                key.DeleteValue(keyname);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }

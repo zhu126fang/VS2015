@@ -1,0 +1,48 @@
+public MailMessage Initial(string Address)
+        {
+            MailMessage m_Mail = new MailMessage();
+            //发件人
+            m_Mail.From = new MailAddress("wawd74520@tom.com");
+            //收件人
+            m_Mail.To.Add(new MailAddress(Address));
+            //主题
+            m_Mail.Subject ="代理好久没验证了!!!";
+            //内容
+            m_Mail.Body = "赶紧重开一下吧!!!";
+            //邮件主题和正文编码格式
+            m_Mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            m_Mail.BodyEncoding = System.Text.Encoding.UTF8;
+            //邮件正文是Html编码
+            m_Mail.IsBodyHtml = true;
+            //优先级
+            m_Mail.Priority = System.Net.Mail.MailPriority.High;
+            //添加附件,可以添加多个
+            //m_Mail.Attachments.Add(new Attachment("f:\\1.txt"));
+            //密件抄送收件人
+            m_Mail.Bcc.Add(Address);
+            //抄送收件人
+            m_Mail.CC.Add(Address);
+
+            return m_Mail;
+        }
+
+ private bool SendEmil()
+        {
+            SmtpClient client = new SmtpClient();
+            //这个地方的用户名你可以用split从发送人中截取
+            client.Credentials = new System.Net.NetworkCredential("wawd74520", "7452088");
+            client.Port = 25;
+            client.Host = "smtp.tom.com";
+            try
+            {
+                client.Send(Initial("1649691481@qq.com"));
+                //ClientScript.RegisterStartupScript(this.GetType(), "myScript", "<script>alert('发送成功!')</script>");
+                SuccMsg.Add("发送邮件成功!" + "1649691481@qq.com");
+                return true;
+            }
+            catch (System.Net.Mail.SmtpException ex)
+            {
+                SuccMsg.Add("发送邮件失败!" + "1649691481@qq.com");
+                return false;
+            }    
+        }

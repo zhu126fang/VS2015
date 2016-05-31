@@ -1,0 +1,7 @@
+//随机数生成器
+Random random = new Random();
+//调用100次,产生随机100种声音
+for (int i = 0; i < 1000; i++)
+{
+    vo.Beep(random.Next(10000), 100);// 调用Win32类库kernel32.dll
+}

@@ -1,0 +1,28 @@
+//"<tabl(.*?)id=\"(.*?)\"(.*?)<tr>(.*?)href=\"(.*?)\"(.*?)CC0000>(.*?)<(.*?)class=\"g\">\\s*(.*?)\\s"
+/// <summary>
+        /// 正则表达式提取中文提示
+        /// </summary>
+        /// <param name="TempListStr">返回提示</param>
+        /// <param name="RefStr">页面代码</param>
+        /// <param name="pattern">正则表达式</param>
+        /// <returns>返回成功失败</returns>//[^\x00-\xff]
+        public static bool SubstringNewsPostError(out List<string[]> TempListStr, string RefStr, string pattern = @"[^\x00-\xff]{1}(.*)[^\x00-\xff]")
+        {
+            TempListStr = new List<string[]>();
+            try
+            {
+                MatchCollection Matches = Regex.Matches(RefStr, pattern, RegexOptions.IgnoreCase);
+                foreach (Match NextMatch in Matches)
+                {
+                    if (NextMatch.Success)
+                    {
+                        TempListStr.Add(new string[] { NextMatch.Groups[2].ToString(), NextMatch.Groups[5].ToString(), NextMatch.Groups[7].ToString(), NextMatch.Groups[9].ToString() });
+                    }
+                    //sb.Append(NextMatch.Value);
+                    //TempListStr.Add(sb.ToString());
+                }
+                //ResultStr = sb.ToString();
+                return true;
+            }
+            catch { return false; }
+        }

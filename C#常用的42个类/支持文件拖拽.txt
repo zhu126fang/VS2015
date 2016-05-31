@@ -1,0 +1,38 @@
+        private void listBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+
+ private void listBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] test = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            //MessageBox.Show(test[0].ToString());
+            Tps1.Clear();
+            listBox1.Items.Clear();
+            try
+            {
+                if (test[0].ToString().Contains(".txt"))
+                {
+                    StreamReader sr1 = new StreamReader(test[0].ToString(), Encoding.UTF8);
+                    string line1;
+                    while ((line1 = sr1.ReadLine()) != null)
+                    {
+                        if (line1.Trim() == "")
+                            continue;
+                        Tps1.Add(line1);
+                        listBox1.Items.Add(line1);
+                    }
+                    sr1.Close();
+                    sr1.Dispose();
+                }
+            }
+            catch { MessageBox.Show("文件不能识别!"); }
+        }

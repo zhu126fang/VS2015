@@ -1,0 +1,17 @@
+ private string OpenFileDlog(string DeafultDir)
+        {
+            OpenFileDialog Ofd = new OpenFileDialog();
+            Ofd.AddExtension = true;
+            Ofd.Filter = "文本文档(*.txt)|*.txt|所有文件(*.*)|*.*";
+            Ofd.InitialDirectory = DeafultDir.Trim() == "" ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop) : DeafultDir;
+            try
+            {
+                //Ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                Ofd.ShowDialog();
+            }
+            catch { }
+            if (Ofd.FileName == null || Ofd.FileName.Trim() == "")
+                return DeafultDir;
+            else
+                return Ofd.FileName;
+        }

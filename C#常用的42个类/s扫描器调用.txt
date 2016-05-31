@@ -1,0 +1,101 @@
+/// <summary>
+        /// 扫描代理
+        /// </summary>
+        /// <param name="ScanList">IP范围</param>
+        /// <returns></returns>
+        public static void ScanPointList(List<string> ScanList)
+        {
+            int PointNumsCmd = 0;
+            int PointNumsCmd2 = 0;
+            
+            for (int i = ScanListIdex; i < ScanList.Count; i++)
+            {
+                PointNumsCmd2 = 0;
+                Process myProcess = new Process();
+                myProcess.StartInfo.FileName = "cmd";//DOS控制平台
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.StartInfo.RedirectStandardInput = true;
+                myProcess.StartInfo.RedirectStandardOutput = true;
+                myProcess.StartInfo.RedirectStandardError = true;
+                myProcess.Start();
+                StreamWriter sIn = myProcess.StandardInput;//标准输入流
+                sIn.AutoFlush = true;
+                StreamReader sOut = myProcess.StandardOutput;//标准输入流
+                StreamReader sErr = myProcess.StandardError;//标准错误流
+                string cmd = "s.exe syn " + ScanList[i] + " 6675" + (TxtThreadNum > 0 ? (" " + TxtThreadNum.ToString()) : "");//DOS控制平台上的命令
+                //string cmd = "s.exe tcp 192.168.1.0 192.168.1.255 80 200";//DOS控制平台上的命令
+                //string cmd = \"s tcp 192.168.1.1 192.168.1.255 80 100\";
+                sIn.Write(cmd + System.Environment.NewLine);
+                sIn.Write("exit" + System.Environment.NewLine);
+
+                string d;
+                while (!sOut.EndOfStream)
+                {
+                    d = sOut.ReadLine();
+                    if (d.Contains("Open") && !d.Contains("Scan"))
+                    {
+                        d = (d.Replace("Open", "")).Trim().Replace(" ", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        d = d.Replace("::", ":");
+                        TempListPoint.Add(d);
+                        PointNumsCmd++;
+                        PointNumsCmd2++;
+                        ScePointNums++;
+                    }
+                    ScePointNums2++;
+                }
+                if (PointNumsCmd2 < 1)
+                {
+                    CreateTextFile(Application.StartupPath + "\\ScanIpNo.txt");
+                    AddMsgTxt(Application.StartupPath + "\\ScanIpNo.txt", ScanList[i] + "\r\n");
+                }
+                else
+                {
+                    CreateTextFile(Application.StartupPath + "\\ScanIpYes.txt");
+                    List<string> Tps = new List<string>();
+                    try
+                    {
+                        StreamReader sr1 = new StreamReader(Application.StartupPath + "\\ScanIpYes.txt");
+                        String line1;
+                        while ((line1 = sr1.ReadLine()) != null)
+                        {
+                            Tps.Add(line1);
+                        }
+                        sr1.Close();
+                        sr1.Dispose();
+                    }
+                    catch { }
+                    if (Tps.Count > 0 && Tps.Contains(ScanList[i]))
+                    { }
+                    else
+                        AddMsgTxt(Application.StartupPath + "\\ScanIpYes.txt", ScanList[i] + "\r\n");
+                }
+
+                if (myProcess.HasExited == false)
+                {
+                    myProcess.Kill();
+                }
+                sIn.Close();
+                sOut.Close();
+                sErr.Close();
+                myProcess.Close();
+
+                ScanListIdex++;
+                if (PointNumsCmd > 0)
+                {
+                    ThreadS = false;
+                    StopToSql = true;
+                    return;
+                }
+            }
+
+            ThreadS = false;
+            StopToSql = true;
+        }

@@ -1,0 +1,66 @@
+    //网络部分
+    public class GF_Network
+    {
+        /*
+         * C#完整的通信代码（点对点，点对多，同步，异步，UDP，TCP）   
+         * http://topic.csdn.net/u/20080619/08/dcef3fe2-f95b-4918-8edb-36d48a3d0528_2.html
+         * 
+         */
+ 
+ 
+        /// <summary>
+        /// 获取IP地址 返回第一个
+        /// </summary>
+        /// <returns></returns>
+        public static string getIP_This()
+        {
+            IPHostEntry hostInfo = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress[] address = hostInfo.AddressList;
+            if (address.Length == 0)
+                return "";
+            else
+                return address[0].ToString();
+        }
+ 
+        /// <summary>
+        /// ping IP地址 timeout 局域网用200,广域网用2000
+        /// </summary>
+        /// <param name="ip">IP地址</param>
+        /// <param name="timeout">超时 毫秒</param>
+        /// <returns></returns>
+        public static bool ping(string ip, int timeout)
+        {            
+            IPAddress ipadd;
+            if (!IPAddress.TryParse(ip, out ipadd))
+            {
+                return false;   
+            }
+            Ping pingSender = new Ping();
+            PingReply reply = pingSender.Send(ip, timeout, new Byte[] { Convert.ToByte(1) });
+            if (reply.Status == IPStatus.Success)
+                return true;
+            else
+                return false;
+        }
+        /// <summary>
+        /// 判读是否是IP地址
+        /// </summary>
+        /// <param name="in_str"></param>
+        /// <returns></returns>
+        public static bool IsIPStr(string in_str)
+        {
+            if (in_str.Replace(".", "").Length != in_str.Length - 3)
+                return false;
+            try
+            {
+                IPAddress ip = IPAddress.Parse(in_str);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+ 
+  
+    }
