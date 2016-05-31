@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00D2358B-19B1-46B8-B854-E348D21D1882}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppLibrary</RootNamespace>
+    <AssemblyName>AppLibrary</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ReadExcel\Common\Assert.cs" />
+    <Compile Include="ReadExcel\Common\AssertionFailed.cs" />
+    <Compile Include="ReadExcel\Common\Logger.cs" />
+    <Compile Include="ReadExcel\Common\log\SimpleLogger.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\BaseCompoundFile.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\BuiltInFormat.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\BuiltInStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\ByteData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\CellReferenceHelper.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\DisplayFormat.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\DoubleHelper.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\BlipStoreEntry.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\BlipType.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\BStoreContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Chart.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\ClientAnchor.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\ClientData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Dg.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\DgContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Dgg.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\DggContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Drawing.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\DrawingGroup.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherAtom.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherRecordData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherRecordType.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\EscherStream.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\MsoDrawingGroupRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\MsoDrawingRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\ObjRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Opt.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\SheetDrawingWriter.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Sp.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\SpContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\Spgr.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\SpgrContainer.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Draw\SplitMenuColors.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\EmptyCell.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\FontRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Fonts.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\FormatRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\FormattingRecords.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\FormulaData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Add.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Area.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Area3d.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\ArgumentSeparator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Attribute.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\BinaryOperator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\BooleanValue.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\BuiltInFunction.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\CellReference.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\CellReference3d.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\CloseParentheses.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Concatenate.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Divide.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\DoubleValue.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Equal.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\ExternalSheet.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\FormulaException.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\FormulaParser.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Function.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\FunctionNames.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\GreaterEqual.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\GreaterThan.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\IntegerValue.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\LessEqual.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\LessThan.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\MemFunc.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Minus.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\MissingArg.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Multiply.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Name.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\NameRange.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\NotEqual.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\NumberValue.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\OpenParentheses.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Operand.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Operator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Parenthesis.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\ParsedThing.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\ParseItem.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Parser.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Percent.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Plus.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Power.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\RangeSeparator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\SharedFormulaArea.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\SharedFormulaCellReference.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\StringFormulaParser.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\StringFunction.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\StringOperator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\StringParseItem.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\StringValue.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Subtract.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Token.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\TokenFormulaParser.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\UnaryMinus.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\UnaryOperator.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\UnaryPlus.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\VariableArgFunction.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Formula\Yylex.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\HeaderFooter.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\IndexMapping.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\IntegerHelper.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\NumFormatRecordsException.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\PaletteRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\RangeImpl.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\RecordData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\SheetRangeImpl.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\StringHelper.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\Type.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\WorkbookMethods.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\WorkspaceInformationRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\WritableRecordData.cs" />
+    <Compile Include="ReadExcel\Reader\Biff\XFRecord.cs" />
+    <Compile Include="ReadExcel\Reader\BooleanCell.cs" />
+    <Compile Include="ReadExcel\Reader\BooleanFormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\Cell.cs" />
+    <Compile Include="ReadExcel\Reader\CellFormat.cs" />
+    <Compile Include="ReadExcel\Reader\CellReferenceHelper.cs" />
+    <Compile Include="ReadExcel\Reader\CellType.cs" />
+    <Compile Include="ReadExcel\Reader\CellView.cs" />
+    <Compile Include="ReadExcel\Reader\DateCell.cs" />
+    <Compile Include="ReadExcel\Reader\DateFormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\ErrorCell.cs" />
+    <Compile Include="ReadExcel\Reader\ErrorFormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Alignment.cs" />
+    <Compile Include="ReadExcel\Reader\Format\BoldStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Border.cs" />
+    <Compile Include="ReadExcel\Reader\Format\BorderLineStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Format\CellFormat.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Colour.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Font.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Format.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Orientation.cs" />
+    <Compile Include="ReadExcel\Reader\Format\PageOrientation.cs" />
+    <Compile Include="ReadExcel\Reader\Format\PaperSize.cs" />
+    <Compile Include="ReadExcel\Reader\Format\Pattern.cs" />
+    <Compile Include="ReadExcel\Reader\Format\ScriptStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Format\UnderlineStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Format\VerticalAlignment.cs" />
+    <Compile Include="ReadExcel\Reader\FormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\HeaderFooter.cs" />
+    <Compile Include="ReadExcel\Reader\Hyperlink.cs" />
+    <Compile Include="ReadExcel\Reader\JXLException.cs" />
+    <Compile Include="ReadExcel\Reader\LabelCell.cs" />
+    <Compile Include="ReadExcel\Reader\NumberCell.cs" />
+    <Compile Include="ReadExcel\Reader\NumberFormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\Range.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BaseSharedFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BiffException.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BiffRecordReader.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BlankCell.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BOFRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BooleanFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BooleanRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BottomMarginRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\BoundsheetRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\CellValue.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\CodepageRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\ColumnInfoRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\CompoundFile.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\DateFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\DateRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\DefaultColumnWidthRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\DefaultRowHeightRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\DimensionRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\ErrorFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\ErrorRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\ExternalSheetRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\File.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\FooterRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\Formula.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\FormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\HeaderRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\HorizontalPageBreaksRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\HyperlinkRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\LabelRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\LabelSSTRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\LeftMarginRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\MarginRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\MergedCellsRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\MulBlankCell.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\MulBlankRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\MulRKRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\NameRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\NineteenFourRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\NumberFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\NumberRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\NumberValue.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PaletteRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PaneRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PasswordException.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PasswordRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PLSRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PrintGridLinesRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\PrintHeadersRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\ProtectRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\Record.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\RightMarginRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\RKHelper.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\RKRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\RowRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\RStringRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SCLRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SetupRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SharedDateFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SharedFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SharedNumberFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SharedStringFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SheetImpl.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SheetReader.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SortRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SSTRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\StringFormulaRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\SupbookRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\TopMarginRecord.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\Window2Record.cs" />
+    <Compile Include="ReadExcel\Reader\Read\Biff\WorkbookParser.cs" />
+    <Compile Include="ReadExcel\Reader\Sheet.cs" />
+    <Compile Include="ReadExcel\Reader\SheetSettings.cs" />
+    <Compile Include="ReadExcel\Reader\StringFormulaCell.cs" />
+    <Compile Include="ReadExcel\Reader\Workbook.cs" />
+    <Compile Include="ReadExcel\Reader\WorkbookSettings.cs" />
+    <Compile Include="ReadExcel\Reader\Write\Border.cs" />
+    <Compile Include="ReadExcel\Reader\Write\BorderLineStyle.cs" />
+    <Compile Include="ReadExcel\Reader\Write\VerticalAlignment.cs" />
+    <Compile Include="ReadExcel\Reader\Write\WritableCell.cs" />
+    <Compile Include="ReadExcel\Units\Byte.cs" />
+    <Compile Include="ReadExcel\Units\DateTimeFormatInfo.cs" />
+    <Compile Include="ReadExcel\Units\File.cs" />
+    <Compile Include="ReadExcel\Units\NumberFormatInfo.cs" />
+    <Compile Include="ReadExcel\Units\ResourceManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriteExcel\BIFF8.cs" />
+    <Compile Include="WriteExcel\CachedBlockRow.cs" />
+    <Compile Include="WriteExcel\Cell.cs" />
+    <Compile Include="WriteExcel\CellCoordinate.cs" />
+    <Compile Include="WriteExcel\Cells.cs" />
+    <Compile Include="WriteExcel\CellTypes.cs" />
+    <Compile Include="WriteExcel\CharacterSets.cs" />
+    <Compile Include="WriteExcel\Color.cs" />
+    <Compile Include="WriteExcel\Colors.cs" />
+    <Compile Include="WriteExcel\ColumnInfo.cs" />
+    <Compile Include="WriteExcel\EscapementTypes.cs" />
+    <Compile Include="WriteExcel\Font.cs" />
+    <Compile Include="WriteExcel\FontFamilies.cs" />
+    <Compile Include="WriteExcel\Fonts.cs" />
+    <Compile Include="WriteExcel\FontWeight.cs" />
+    <Compile Include="WriteExcel\Format.cs" />
+    <Compile Include="WriteExcel\Formats.cs" />
+    <Compile Include="WriteExcel\FormulaRecord.cs" />
+    <Compile Include="WriteExcel\HorizontalAlignments.cs" />
+    <Compile Include="WriteExcel\IXFTarget.cs" />
+    <Compile Include="WriteExcel\LineStyle.cs" />
+    <Compile Include="WriteExcel\MergeArea.cs" />
+    <Compile Include="WriteExcel\Byte\Bits.cs" />
+    <Compile Include="WriteExcel\Byte\Bytes.cs" />
+    <Compile Include="WriteExcel\MSOLE\Directory.cs" />
+    <Compile Include="WriteExcel\MSOLE\Header.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\DocumentSummaryInformationSection.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\Header.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\MetadataStream.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\OriginOperatingSystems.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\OriginOperatingSystemVersions.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\Property.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\PropertyList.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\Section.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\SectionList.cs" />
+    <Compile Include="WriteExcel\MSOLE\MetaData\SummaryInformationSection.cs" />
+    <Compile Include="WriteExcel\MSOLE\Msat.cs" />
+    <Compile Include="WriteExcel\MSOLE\Ole2Document.cs" />
+    <Compile Include="WriteExcel\MSOLE\Sat.cs" />
+    <Compile Include="WriteExcel\MSOLE\Ssat.cs" />
+    <Compile Include="WriteExcel\MSOLE\Stream.cs" />
+    <Compile Include="WriteExcel\MSOLE\Streams.cs" />
+    <Compile Include="WriteExcel\Palette.cs" />
+    <Compile Include="WriteExcel\Record.cs" />
+    <Compile Include="WriteExcel\RID.cs" />
+    <Compile Include="WriteExcel\Row.cs" />
+    <Compile Include="WriteExcel\RowBlocks.cs" />
+    <Compile Include="WriteExcel\Rows.cs" />
+    <Compile Include="WriteExcel\SharedStringTable.cs" />
+    <Compile Include="WriteExcel\StandardFormats.cs" />
+    <Compile Include="WriteExcel\Style.cs" />
+    <Compile Include="WriteExcel\Styles.cs" />
+    <Compile Include="WriteExcel\TextDirections.cs" />
+    <Compile Include="WriteExcel\TextRotations.cs" />
+    <Compile Include="WriteExcel\UnderlineTypes.cs" />
+    <Compile Include="WriteExcel\UnicodeBytes.cs" />
+    <Compile Include="WriteExcel\Util.cs" />
+    <Compile Include="WriteExcel\VerticalAlignments.cs" />
+    <Compile Include="WriteExcel\Workbook.cs" />
+    <Compile Include="WriteExcel\Worksheet.cs" />
+    <Compile Include="WriteExcel\Worksheets.cs" />
+    <Compile Include="WriteExcel\WorksheetTypes.cs" />
+    <Compile Include="WriteExcel\WorksheetVisibilities.cs" />
+    <Compile Include="WriteExcel\XF.cs" />
+    <Compile Include="WriteExcel\XFs.cs" />
+    <Compile Include="WriteExcel\XlsDocument.cs" />
+    <Compile Include="WriteExcel\XlsText.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ReadExcel\Reader\Biff\Formula\FunctionNames.resx">
+      <DependentUpon>FunctionNames.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadExcel\Reader\Biff\Formula\FunctionNames_de.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadExcel\Reader\Biff\Formula\FunctionNames_es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReadExcel\Reader\Biff\Formula\FunctionNames_fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
