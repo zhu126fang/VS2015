@@ -1,0 +1,51 @@
+Option Explicit
+Private Declare Function timeGetTime Lib "winmm.dll" () As Long
+
+Dim Savetime As Double
+
+Dim A As String
+Dim FreeNum As Integer
+
+Private Sub Form_Load()
+
+        Shell ("netsh wlan connect  name=""Techbooster"" ssid=""Techbooster""")   '连接wifi
+        Label1.Caption = "AEF连接中..."
+
+End Sub
+
+Private Sub Label1_Click()
+
+End Sub
+
+Private Sub Timer1_Timer()
+        Shell ("cmd /c netsh wlan show interfaces >C:\01.txt")  '查询连接状态
+                                
+        Savetime = timeGetTime                                  '延时500ms
+        While timeGetTime < Savetime + 500
+                DoEvents
+        Wend
+        
+        FreeNum = FreeFile
+        Open "C:\01.txt" For Input As #FreeNum                  '
+        Do Until EOF(FreeNum)
+                Line Input #FreeNum, A
+                If InStr(A, "已连接") Then
+                        Label1.Caption = "连接成功!"
+                End If
+                
+                If InStr(A, "已断开连接") Then
+                        Label1.Caption = "连接失败!"
+                End If
+                'Form1.Print A
+        Loop
+        Close FreeNum
+                
+        Savetime = timeGetTime                                  '延时500ms
+        While timeGetTime < Savetime + 500
+                DoEvents
+        Wend
+        
+        Kill "C:\01.txt"
+        
+        End
+End Sub
