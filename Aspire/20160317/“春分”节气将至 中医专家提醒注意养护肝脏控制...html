@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>“春分”节气将至 中医专家提醒注意养护肝脏控制情绪 星辰在线 长沙新闻网 长沙新闻门户</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="keywords" content="长沙春分;养肝" />
+    <meta name="description" content="3月20日，迎来了春分节气。古语云：“春分者，阴阳相半也，故昼夜均而寒暑平”。" />
+    <link rel="stylesheet" href="/images100001/pc_layout.css" type="text/css" />
+
+    <link rel="apple-touch-icon" href="/images100001/logo180.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/images100001/logo76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/images100001/logo114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/images100001/logo120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/images100001/logo152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images100001/logo180.png" />
+    <script type="text/javascript" src="/system_js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/front_js/common.js"></script>
+    <script type="text/javascript" src="/front_js/site/site_ad.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/front_js/comment.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            //格式化分钟显示为两位数
+	    $(".showminute").each(function(){
+	    var showminute=$(this).text();
+	    if(showminute<10) $(this).text("0"+showminute.toString());
+	    });
+            //统计点击
+            $.post("/default.php?mod=document_news&a=async_add_and_get_hit&id=409105", {
+                resultbox: $(this).html()
+            }, function(result) {
+                $("#hit_count").html(result);
+                $("#hit_count").show();
+            });
+            CreateLongComment(409105,7,187,true);
+            CommentShow(0,409105,7,"",true);            
+        });
+
+        window.CommentShowCallBack = function(data){
+            var listContent = "";
+            var pagerButton = data["page_button"];
+            comment_count = data["count"];
+            var result = eval(data["result"]);
+            $.each(result, function (i, v) {
+                var username = v["UserName"].replace(" ","");
+                if (username == undefined || username == "") {
+                    username = "游客";
+                }else if(username.length > 30){
+                    var mphone =username.substr(3,4);
+                    username = username.replace(mphone,"****");
+                }
+                listContent = listContent + '<div class="huifu">'+
+                '<div class="user_icon"><img src="/images100001/user_icon.png" width="45" height="45" /></div>'+
+                '<div class="right">'+
+                '<div class="time"><em><span class="span2"></span>0 | <a href="">回复</a></em>'+username+'      <font class="grey">'+v["CreateDate"]+'</font></div>'+
+                '<div class="user_pinglun">'+v["Content"]+'</div>'+
+                '</div>'+
+                '<div class="clean"></div>'+
+                '</div>';
+            });
+
+            $("#commentmessage").html(listContent);
+            $("#comment_pagerbutton").html(pagerButton);
+            $("#count").html(comment_count);
+        };
+
+        window.CreateLongCommentCallback = function(data,tableId,tableType,channelId){
+            var re_url = window.location.href;
+            var result = data["result"];
+            var username = "";
+            var name = '<td class="guest" style="text-align:left;">您还未<a href="/default.php?mod=channel&a=default&temp=user_login&re_url=' + re_url + '" style="font-weight:bold">登录</a>,目前的身份是游客</td>';
+            if (result["UserMobile"] != undefined && result["UserMobile"].length > 0) {
+                username = result["UserMobile"];
+                name = '<td class="username" style="text-align:left">您已用' + username + '登录，点击<a href="/default.php?mod=user&a=logout">注销<a/></td>';
+            }
+
+            if (tableId > 0) {
+                $('#comment').append('<form id="mainForm" action="/default.php?mod=comment&a=create" data-ajax="false" method="post">'
+                + '<div class="div_15">'
+                + '<div class="pinglun">评论（<span id="count">0</span>）</div>'
+                + '<textarea name="content" cols="" rows="4" class="textarea">我要评论</textarea>'
+                + '<button class="button">发表</button>'
+                + '<div class="clean"></div>'
+                + '<input type="hidden" value="' + tableId + '" name="table_id"/>'
+                + '<input type="hidden" value="' + tableType + '" name="table_type"/>'
+                + '<input type="hidden" name="channel_id" value="' + channelId + '"/>'
+                + '<input type="hidden" id="url" name="url" value="' + getURL() + '"/></td>'
+                + '</div></form>');
+            }
+
+
+        };
+    </script>
+    <!--问政调用css-->
+    <style>
+        .thread_title{}
+        .thread_content{width:324px;height:44px;overflow: hidden}
+        .thread_content a{color: #BE0115;font-size: 12px;}
+        .answer{width:274px;height:38px;line-height:20px;overflow: hidden}
+    </style>
+    <script>
+        $(document).ready(function () {
+            useDefaultImg();
+        });
+        
+        /**
+         * Created by a525 on 15-3-16.
+         */
+        function QueryString()
+        {
+            var name,value,i;
+            var str=location.href;
+            var num=str.indexOf("?")
+            str=str.substr(num+1);
+            var arrtmp=str.split("&");
+            for(i=0;i < arrtmp.length;i++){
+                num=arrtmp[i].indexOf("=");
+                if(num>0){
+                    name=arrtmp[i].substring(0,num);
+                    value=arrtmp[i].substr(num+1);
+                    this[name]=value;
+                }
+            }
+        }
+        var Request=new QueryString();
+
+
+
+        function checkDevice(){
+            var stay=Request["stay"];
+            if(stay<=0||stay==undefined){
+
+                var devise=browserRedirect();
+
+                var oriUrl=location.href.toLowerCase();
+                var url=oriUrl.replace("_m.html",".html");
+                url=url.replace("_p.html",".html");
+                url=url.replace("_t.html",".html");
+                switch(devise){
+                    case "PC":
+
+                        if(url!=oriUrl){
+                            location.href=url;
+                        }
+                        break;
+                    case "Mobile":
+
+                        if(url.indexOf(".htm")<0){
+                            //default
+                            location.href = url + "/default_m.html"
+                        }
+
+
+                        url=url.replace(".html","_m.html");
+                        if(url!=oriUrl){
+                            location.href=url;
+                        }
+                        break;
+                    case "Pad":
+
+                        if(url.indexOf(".htm")<0){
+                            //default
+                            location.href = url + "/default_p.html"
+                        }
+
+                        url=url.replace(".html","_p.html");
+                        if(url!=oriUrl){
+                            location.href=url;
+                        }
+                        break;
+                    case "TV":
+
+                        if(url.indexOf(".htm")<0){
+                            //default
+                            location.href = url + "/default_t.html"
+                        }
+
+                        url=url.replace(".html","_t.html");
+                        if(url!=oriUrl){
+                            location.href=url;
+                        }
+                        break;
+                    default :
+                        if(url!=oriUrl){
+                            location.href=url;
+                        }
+                        break;
+                }
+
+            }
+
+
+
+        }
+
+        checkDevice();
+
+        function browserRedirect() {
+            var devise="PC";
+            var sUserAgent = navigator.userAgent.toLowerCase();        var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                //var width=window.screen.width;
+                //var height=window.screen.height;
+                //if(width>1000&&height>1000){
+                //    devise="Pad";
+                //}else{
+                devise="Mobile";
+                //}
+            } else {
+                devise="PC";
+            }
+            return devise;
+        }
+
+
+
+
+        function SetATagForUrl(idString){
+
+            var content = document.getElementById(idString);
+            var str=content.innerHTML;
+            var re = /(http:\/\/[\w.\/]+)(?![^<]+>)/gi;
+            content.innerHTML=str.replace(re,"<a href='$1' target='_blank'>$1</a>");//http
+
+            str=content.innerHTML;
+            var re2 = /(https:\/\/[\w.\/]+)(?![^<]+>)/gi;
+            content.innerHTML=str.replace(re2,"<a href='$1' target='_blank'>$1</a>");//https
+        }
+
+        //没有题图时使用默认图片
+        function useDefaultImg(){
+            $(".main img").each(function () {
+                if ($(this).attr("src") == ""){
+                    $(this).attr("src","/images100001/default.jpg");
+                }
+            })
+        }
+    </script>
+    <style>
+    .content .article img{ max-width:600px; height:auto;}
+    </style>
+</head>
+
+<body>
+<div class="head">
+    <div class="top">
+        <div class="W_1k">
+            <div class="left">
+                <ul>
+                    <li><a href="http://www.changsha.cn" target="_blank">星辰在线</a></li>
+                    <li><a href="http://ms.changsha.cn" target="_blank">问政长沙</a></li>
+                    <li><a href="http://www.image1.cn" target="_blank">星辰影像</a></li>
+                    <li><a href="http://bbs.changsha.cn" target="_blank">星辰论坛</a></li>
+                    <li><a href="http://www.cslz.gov.cn" target="_blank">长沙廉政</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="addFavorite(document.title,window.location)"><img src="/images100001/shoucang.jpg" width="13" height="13" /> 加为收藏</a></li>
+                    <li style="display:none"><a href="javascript:void(0)" onclick="setHomepage(this,window.location)"><img src="/images100001/shouye.jpg" width="13" height="13" /> 设为首页</a></li>
+                </ul>
+            </div>
+            <div class="clean"></div>
+        </div>
+    </div>
+    <div class="logo"><img src="/images100001/logo.jpg" width="220" height="62" /></div>
+    <div class="nav"><div class="W_1k">
+        <div class="main_nav">
+            <a href="/" target="_blank">首页</a>
+            <a href="/h/186/list.html" target="_blank">时政</a>
+            <a href="/h/187/list.html" target="_blank">都市</a>
+            <a href="/h/188/list.html" target="_blank">财经</a>
+            <a href="/h/189/list.html" target="_blank">社会</a>
+            <a href="/h/409/list.html" target="_blank">湖南</a>
+            <a href="/h/413/list.html" target="_blank">国内</a>
+            <a href="/h/417/list.html" target="_blank">国际</a>
+            <div class="show_more"><a class="" onclick="$('.secend_nav').toggle();" href="javascript:void(0)" >$nbsp;</a></div>
+        </div></div>
+        <div class="secend_nav" style="display:none"><div class="W_1k">
+            <a href="/h/422/list.html" target="_blank">体育</a>
+            <a href="/h/421/list.html" target="_blank">文化</a>
+            <a href="/h/990/list.html" target="_blank">玩转长沙</a>
+            <a href="/h/538/list.html" target="_blank">拍案惊奇</a>
+            <a href="/h/989/list.html" target="_blank">长沙发布</a>
+            <a href="/h/988/list.html" target="_blank">长沙人一天</a>
+            <a href="/h/10526/list.html" target="_blank">读城</a>
+            <a href="/h/4068/list.html" target="_blank">视界</a>
+            <a href="/h/7469/list.html" target="_blank">滚动新闻</a>
+            <a href="/h/230/list.html" target="_blank">湘江评论</a>
+            <a href="/h/100131/list.html" target="_blank">微观</a>
+            <a href="/channel-list-channel_100115-100115.html" target="_blank">创客圈</a>
+            <a href="" style="display:none;">专稿</a>
+        </div></div>
+    </div>
+</div>
+<div class="ad W_1k"><div class="site_ad_276"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_276.js" charset="utf-8"></script></div>
+<script type="text/javascript">
+
+    // 设置为主页
+    function setHomepage(obj,vrl){
+        try{
+            obj.style.behavior='url(#default#homepage)';obj.setHomePage(vrl);
+        }
+        catch(e){
+            if(window.netscape) {
+                try {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                }
+                catch (e) {
+                    alert("此操作被浏览器拒绝！n请在浏览器地址栏输入“about:config”并回车n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。");
+                }
+                var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
+                prefs.setCharPref('browser.startup.homepage',vrl);
+            }else{
+                alert("您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入："+vrl+"点击确定。");
+            }
+        }
+    }
+    // 加入收藏 兼容360和IE6
+    function addFavorite(sTitle,sURL)
+    {
+        try
+        {
+            window.external.addFavorite(sURL, sTitle);
+        }
+        catch (e)
+        {
+            try
+            {
+                window.sidebar.addPanel(sTitle, sURL, "");
+            }
+            catch (e)
+            {
+                alert("加入收藏失败，请使用Ctrl+D进行添加");
+            }
+        }
+    }
+</script> 
+<div class="main W_1k">
+    <div class="right w_648 l_border">
+        <div class="list">
+            <div class="r_title"><div class="det_position">您所在的位置：<a href="http://www.changsha.cn/">星辰在线</a> > <a href="http://news.changsha.cn/">长沙新闻网</a> > <a href="/h/187/list.html">长沙都市</a> </div></div>
+            <div class="content">
+                <div class="li">
+                    <h2>“春分”节气将至 中医专家提醒注意养护肝脏控制情绪</h2>
+                    <div class="time_info"><a href="/h/187/list.html" target="_blank">长沙都市</a><span id="hit_count" class="visited" style="display:none;"></span>|<span class="time">2016-03-17  17:<span class="showminute">10</span></span></div>
+                    <div class="editor"> 来源：星辰在线 | 作者：记者 岳珊 通讯员 谢文婷 | 编辑：丁虹</div>
+                    <div class="article">
+                        <p><p>　　<strong>星辰在线3月17日讯(星辰全媒体记者 岳珊 通讯员 谢文婷)</strong> 3月20日，迎来了春分节气。古语云：&ldquo;春分者，阴阳相半也，故昼夜均而寒暑平&rdquo;。中医认为在春分时节正是调理体内阴阳平衡，协调机体功能的重要时机。如何养生，湖南中医药大学第二附属医院内科主任毛以林提醒：春分时节，在饮食养生的同时也应该注意养护肝脏，控制情绪。不同季节养生的重点不同，春天应该以&ldquo;养肝&rdquo;为主。 因为春天五行属木，而中医学认为人体的五脏之中肝也属木性，因而春气通肝。</p>
+<p>　　一、以脏补脏，宜选鸡肝。鸡肝味甘、性温，可补血养肝，亦可温补脾胃。与其他动物肝脏相比，鸡肝的补肝功效更强。</p>
+<p>　　二、肝主藏血，以血补肝。动物的血也可以养护肝脏。鸭血性平，且营养丰富，是春季养肝的佳品。</p>
+<p>　　三、舒肝养血，宜选菠菜。菠菜是春季的时令蔬菜，有滋阴润燥，舒肝养血的功效，也可辅助治疗肝舒及其并发的胃病。</p>
+<p>　　四、控制情绪，养肝护肝。在春天，肝气旺盛而舒达，人的精神焕发。可是如果肝气升发太过或是肝气郁结，都易损伤肝脏导致一系列疾病的发生。因此，顺应天时变化，对自己的日常饮食起居及精神情志进行相应调整，要保持心情舒畅，避免暴怒烦躁，避免忧郁压抑，避免过度饮酒。</p>
+<p><strong>　　【相关链接】</strong></p>
+<p><strong>　　几款养生粥谱推荐</strong></p>
+<p>　　1.鸡肝菠菜粥</p>
+<p>　　配料：菠菜5棵 鸡肝100g 粳米100g</p>
+<p>　　做法：菠菜摘洗干净，鸡肝洗净，粳米淘洗清水浸泡20分钟，鸡肝切片加少许料酒腌拌片刻，锅中水烧开放入鸡肝焯烫变色，捞处沥干水分备用。锅中水烧开放入粳米，大火熬煮开搅拌均匀，然后加盖小火慢熬，这时把菠菜焯烫过凉。米粥变稠加入3毫升色拉油搅拌均匀，加入鸡肝，加入葱姜丝，再加适量的盐继续熬煮5分钟。然后加少许胡椒粉，加入烫过的菠菜，加入少许鸡精，淋入香油，搅拌均匀关火。</p>
+<p>　　此道养生滋补粥，养胃补肝，解毒散热，是春季补肝护肝的营养药膳，适合脾胃虚弱者和儿童食用。</p>
+<p>　　2、韭菜粳米粥：</p>
+<p>　　配料：新鲜韭菜30~60g 粳米100g，细盐少许。</p>
+<p>　　做法：先将50克韭莱洗净切碎待用。再将粳米100 克淘净，煮沸，再与韭菜同煮至烂，早晚各服1次。</p>
+<p>　　此粥有温胃助阳，促进生发作用。但阴虚休质、身患疮疡者不宜食用。</p>
+<p>　　3、 芝麻核桃粥：</p>
+<p>　　配料：取黑芝麻50克，核桃仁50克，大米100克。</p>
+<p>　　做法：先将黑芝麻、核桃仁捣碎，大米洗净，放水适量先煮沸，再放黑芝麻、核桃仁，粥成可食。</p>
+<p>　　能补肾健胃、益寿延年，可用于肾虚、多梦、失眠、腰痛。为春令益康之疗。</p></p>
+                    </div>
+                    <div style="text-align: center;">
+			<img style="width: 50%; margin: 0px auto;" src="/images100001/2dcode.jpg">
+		    </div>
+                    <div class="adv_6"><div class="site_ad_288"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_288.js" charset="utf-8"></script></div>
+                    <div class="label">标签：长沙　春分;养肝</div>
+                    <div class="related_news">
+                        <ul>
+                        
+                        <!--相关新闻-->
+                            
+                                    
+                                    <li><a href="/h/187/20160317/409072.html" target="_blank">长沙出现“油菜花海” 免费向市民展出</a></li>
+                                    
+                                
+                                    
+                                    <li><a href="/h/186/20160317/409083.html" target="_blank">新闻怎么玩?长沙新媒体小清新首度集体受教育(图)</a></li>
+                                    
+                                
+                                    
+                                    <li><a href="/h/187/20160317/408967.html" target="_blank">长沙目前共建立588个消费维权服务站</a></li>
+                                    
+                                
+                                    
+                                    <li><a href="/h/189/20160317/408944.html" target="_blank">长沙小伙旅馆劫杀25岁女孩 母亲当庭为儿下跪</a></li>
+                                    
+                                
+
+                        </ul>
+                    </div>
+                    <!-----------comment------------>
+                    <div id="comment" idvalue="2" style="width:98%;margin:5px auto;"></div>
+                    <div style="width:100%;margin:5px auto;">
+                        <dl id="commentmessage"></dl>
+                        <a name="comment"></a>
+                        <div id="comment_pagerbutton"></div>
+                    </div>
+                    <!-----------comment-->
+                </div>
+                <div class="clean"></div>
+                <div class="right_ad">
+                    <ul>
+                        <li><div class="site_ad_289"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_289.js" charset="utf-8"></script></li>
+                        <li><div class="site_ad_290"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_290.js" charset="utf-8"></script></li>
+                        <li><div class="site_ad_291"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_291.js" charset="utf-8"></script></li>
+                    </ul>
+                    <div class="clean"></div>
+                </div>
+                <!-- 老新闻中心频道集合推荐调用 js -->
+                <script type="text/javascript" src="http://news.changsha.cn/h/7688/news2_channnel_rec_2015.js"></script>
+                <!-- 星辰影像人像调用 js-->
+                <script type="text/javascript" src="http://www.image1.cn/news2_image1_renxiang_2015.js"></script>
+                <!-- 老新闻中心消费咨询调用 js -->
+                <script type="text/javascript" src="http://news.changsha.cn/h/7688/news2_contantdown_1078_2015.js"></script>
+                <!-- 老新闻中心咨询精选调用 js -->
+                <script type="text/javascript" src="http://news.changsha.cn/h/7688/news2_contantdown_7692_2015.js"></script>
+
+                <div class="announce">
+                    <b>版权声明(<a href="http://news.changsha.cn/csoldt/201012/t20101217_1202644.htm" target="_blank">点击进入</a>)</b><br />
+                    ①长沙晚报报业集团书面授权星辰在线，在互联网上使用、发布、交流集团所属系列媒体的新闻信息。未经权利人授权，任何媒体、网站不得转载、摘编或利用其它方式使用长沙晚报报业集团任何作品。已经本网授权使用作品的，应在授权范围内使用，并注明“来源：星辰在线”或“来源：星辰在线-长沙晚报”。否则，本网将追究其相关法律责任。<br />
+                    ②本网未注明“来源：星辰在线”或“星辰在线-长沙晚报”的作品均为转载稿，此类稿件不代表本网观点。如果本网转载的稿件涉及您的版权、名誉权等问题，敬请立即通知我们，并提供真实、有效的书面证明，我们将在核实后采取有效措施妥善处理。<br />
+                    联系方式：星辰在线新闻中心 联系电话：0731-82205980 传真：0731-82205938<br />
+                    附：长沙晚报报业集团系列媒体：《长沙晚报》、《星辰在线》、《星沙时报》、《壹早报》、《知识博览报》、《浏阳日报》、《学生·家长·社会》、《晚报文萃》、《掌上长沙》、《长沙晚报手机报》。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="left w_324">
+    <div class="search"><input type="text" value="输入关键词……"></div>
+    <div class="img_adv border_B">
+        <ul>
+            <li><div class="site_ad_283"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_283.js" charset="utf-8"></script></li>
+            <li><div class="site_ad_284"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_284.js" charset="utf-8"></script></li>
+        </ul>
+        <div class="clean"></div>
+    </div>
+    
+    
+    
+    
+    <div class="hot_box border_B">
+        <div class="title"><a>热读新闻</a></div>
+        <ul>
+        
+        
+            
+                    
+                    <li><a href="/h/409/20160315/408427.html" target="_blank">湖南卫视搅动“辣椒江湖” 纪录片《辣椒的味道</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408419.html" target="_blank">湘潭一只母鸡一天生6个蛋 专家：工作30年没见</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408367.html" target="_blank">孙金龙任新疆生产建设兵团政委 曾任湖南省委</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408363.html" target="_blank">永州市通报7起违反作风建设规定典型问题</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408364.html" target="_blank">孙法军任湘西州委常委、副州长提名人选</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408354.html" target="_blank">湖南省工商局：家用电器抽检合格率低于50%</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408337.html" target="_blank">网售2元一盒丁桂儿脐贴竟是益阳人卖的假药</a></li>
+                    
+                
+                    
+                    <li><a href="/h/409/20160315/408303.html" target="_blank">永州今年农村五保分散供养标准提至3200元/年</a></li>
+                    
+                
+        <!---->
+        </ul>
+    </div>
+    <!--<div class="hot_box border_B">
+        <div class="title"><a>热读新闻</a></div>
+        <ul>
+        
+        
+            <ic id="channel_4" type="document_news_list" where="day_belong_site" where_value="30" order="hit" top="8" title="42">
+                <item>
+                    <![CDATA[
+                    <li><a href="{c_DocumentNewsUrl}" target="_blank">{f_DocumentNewsTitle}</a></li>
+                    ]]>
+                </item>
+            </ic>
+        </ul>
+    </div>-->
+    <div class="ad_l border_B">
+        <div class="site_ad_285"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_285.js" charset="utf-8"></script>
+    </div>
+    <div class="tuijian_box">
+        <div class="title"><a href="/channel-list-channel_list-180.html" target="_blank">热门推荐</a></div>
+        <div class="imgs_list">
+            <ul>
+                
+                        
+                        <li><a href="http://news.changsha.cn/h/186/20160316/408810.html" target="_blank"><img src="" width="155" height="100" /><div class="title">星辰“蓝精灵”两会报道团：Hi长沙!我们回来啦!</div></a></li>
+                        
+                    
+                        
+                        <li><a href="http://news.changsha.cn/h/187/20160317/408820.html" target="_blank"><img src="/upload/document_news/408839/20160317/title_pic1_56ea020954999.jpg" width="155" height="100" /><div class="title">岳麓大道-桐梓坡路段预计4月10日前完成增绿</div></a></li>
+                        
+                    
+                        
+                        <li><a href="http://news.changsha.cn/h/187/20160317/408822.html" target="_blank"><img src="/upload/document_news/408840/20160317/title_pic1_56ea026fa5c73.jpg" width="155" height="100" /><div class="title">长沙交警权威解读公安部139号令</div></a></li>
+                        
+                    
+                        
+                        <li><a href="http://news.changsha.cn/h/187/20160317/408833.html" target="_blank"><img src="/upload/document_news/408929/20160317/title_pic1_56ea2d0501449.jpg" width="155" height="100" /><div class="title">长株潭三条城际干道拟改名 公示时间持续到3月25日</div></a></li>
+                        
+                    
+                        
+                        <li><a href="http://news.changsha.cn/h/187/20160317/408830.html" target="_blank"><img src="/upload/document_news/408936/20160317/title_pic1_56ea2c3cca7e9.jpg" width="155" height="100" /><div class="title">长沙初升高体育考试细则出炉 4月19日开考设三个考点</div></a></li>
+                        
+                    
+                        
+                        <li><a href="http://news.changsha.cn/h/187/20160317/408825.html" target="_blank"><img src="/upload/document_news/408938/20160317/title_pic1_56ea2c87f0ee4.jpg" width="155" height="100" /><div class="title">湖南启动学生视力健康教育五年计划 长沙近视比例已近半</div></a></li>
+                        
+                    
+            </ul>
+            <div class="clean"></div>
+        </div>
+    </div>
+    <div class="ad_l border_B" style="border-bottom:none">
+        <div class="site_ad_286"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_286.js" charset="utf-8"></script>
+    </div>
+    <div id="ad_l_fixed">
+        <div class="ad_l border_B">
+            <div class="site_ad_287"></div><script language="javascript" src="/front_js/site_ad/4/site_ad_287.js" charset="utf-8"></script>
+        </div>
+        <div class="redian_zt">
+            <div class="title"><a href="http://ms.changsha.cn/h/65/list.html" target="_blank">咨询热点</a></div>
+            <div class="zt_list">
+                <ul id="thread_list_without_reply">
+                </ul>
+            </div>
+            <div class="title"><a href="/h/7692/list.html" target="_blank">资讯精选</a></div>
+            <div class="zt_list">
+                <ul>
+
+
+                <li style="height:22px;width:324px;line-height:22px;overflow: hidden "><a href="/h/7692/20160317/409086.html" target="_blank">加盟忆江南墙艺好不好?加盟费高吗?</a></li>
+
+
+
+                <li style="height:22px;width:324px;line-height:22px;overflow: hidden "><a href="/h/7692/20160317/409084.html" target="_blank">别细思极恐了 我们正打算让人工智能对你服服帖帖</a></li>
+
+
+
+                <li style="height:22px;width:324px;line-height:22px;overflow: hidden "><a href="/h/7692/20160317/409082.html" target="_blank">郑州万通：总理指明十个创业方向 再不学汽修你就O</a></li>
+
+
+
+                <li style="height:22px;width:324px;line-height:22px;overflow: hidden "><a href="/h/7692/20160317/409081.html" target="_blank">安徽新东方：CCTV7《聚焦三农》栏目20160315职业</a></li>
+
+                    
+                </ul>
+         </div>
+        </div>
+    </div>
+</div>
+<style>
+    .onFloat {position:fixed;top:0;background:#ffffff;width:324px}
+</style>
+<script>
+    $(document).ready(function () {
+        fixeBlock();
+        ShowThreadWithoutReply(65,4)
+    });
+    //固定左下悬浮框
+    //比较 元素到文档顶部的距离 和 窗口向下滚动的距离 实现样式切换
+    function fixeBlock(){
+        var fixDiv = $("#ad_l_fixed");
+        var distanceToTop = (fixDiv.offset().top);
+        $(window).scroll(function () {
+            var scrollHeight = ($(window).scrollTop());
+            if (scrollHeight >= distanceToTop) {
+                fixDiv.addClass("onFloat");
+            }else{
+                if (fixDiv.hasClass("onFloat")){
+                    fixDiv.removeClass("onFloat");
+                }
+            }
+        })
+    }
+
+    //输出咨询热点
+    function ShowThreadWithoutReply(channelid, topcount) {
+        $.ajax({
+            url:"http://func.changsha.cn/index.php",
+            data:{a:"doc",f:"thread",m:"frontlist",p:1,ps:topcount,cid:channelid},
+            dataType:"jsonp",
+            jsonp:"jsonpcallback",
+            success:function(data){
+                var listcontent = '';
+                $.each(data, function (i, v) {
+                    listcontent+='<li style="height:22px;width:324px;line-height:22px;overflow: hidden "><a href="http://ms.changsha.cn/h/'+channelid+'/'+v["f_year"]+v["f_month"]+v["f_day"]+'/'+v["documentthreadid"]+'.html" target="_blank">'+  v["subject"] +'</a></li>';
+                });
+                $("#thread_list_without_reply").html(listcontent);
+            }
+        });
+    }
+</script>
+    <div class="clean"> </div>
+</div>
+
+<div class="foot">
+<div class="W_1k">
+<a href="http://www.changsha.cn/publish/gywm/about.htm" target="_blank">关于我们</a> | <a href="http://www.changsha.cn/h/9774/sc21.html" target="_blank">集团简介</a> | <a href="http://www.changsha.cn/ad/20040513ad/index.htm" target="_blank">广告服务</a> | <a href="http://www.changsha.cn/contact.htm" target="_blank">联系方式</a> | <a href="http://www.changsha.cn/publish/gywm/baohu.htm" target="_blank">保护隐私</a> | <a href="http://lawyer.changsha.cn/" target="_blank">法律顾问</a> | <a href="http://123.changsha.cn/xinwen/news/index.html" target="_blank">友情链接</a> | <a href="http://tg.changsha.cn/" target="_blank">网上投稿</a> | <a href="http://www.changsha.cn/mail/index.htm" target="_blank">星辰邮箱</a> | <a href="http://zt.changsha.cn/h/3836/" target="_blank">人才招聘</a> 
+	<div class="rights">全国新闻记者证管理及核验网络系统 违法与不良信息举报中心<br />
+	  新闻热线：18907496114   广告热线：18907496588   本网举报电话:0731-82205980 <br />
+	  增值电信业务经营许可证 湘 B2-20100069   互联网新闻信息服务许可证 湘网文[2014]0251-002号   短消息类服务接入代码使用证<br />
+    互联网出版许可证   新出网证(湘)字004号   信息网络传播视听节目许可证   中国互联网视听节目服务自律公约   广播电视节目制作经营许可证 (湘)字第00106号</div>
+</div>
+</div>
+
+<div class="icon_logo">
+    <ul>
+        <li><a href="http://weibo.com/hncsol" target="_blank"><img src="/images100001/sinalogo.png" width="39" height="39" /></a></li>
+        <li><a href="http://e.t.qq.com/csnews" target="_blank"><img src="/images100001/tencentlogo.png" width="39" height="39" /></a></li>
+        <li style="display:none"><img src="/images100001/weixinlogo.png" width="39" height="39" /></li>
+    </ul>
+</div>
+<div class="back_2_top"><a href="javascript:scroll(0,0)"><img src="/images100001/back_2_top.jpg" width="39" height="39" /></a></div>
+<script type="text/javascript">var visitConfig = encodeURIComponent("http://news.changsha.cn") +"||4||187||3||409105||"+encodeURI("");</script> 
+<script type="text/javascript" src="/front_js/visit.js" charset="utf-8"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_30005919'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30005919' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/* Festo table style */
+table {
+	margin-top: 5px;
+	margin-left: 2px;
+	margin-bottom: 5px;
+	border-collapse: collapse;
+	border-left: 1px solid #000;
+}
+
+td {
+	border-bottom: 1px solid #000;
+	padding: 2px;
+	vertical-align: middle;
+	border-right: 1px solid #000;
+}
+
+.firstRow {
+	border-bottom: 3px solid #000;
+	font-weight: bold;
+}
+
+.firstCell {
+	border-bottom: none;
+	font-weight: bold;
+}
+
+/* Rack display */
+.rack, .firstModuleBmp, .ModuleBmp, .defLastModuleBmp, .valveLastModuleBmp {
+	margin-top: 5px;
+	height: 113px;
+	float: left;
+	width: 100%;
+}
+
+#rack { 
+	height: 133px;
+	margin-top: 3px; 
+	overflow: auto;
+}
+
+#innerRack {
+	width: auto;
+}
+
+.firstModuleBmp {	width: 27px; }
+.ModuleBmp { width: 50px; }
+.defLastModuleBmp { width: 75px; }
+.valveLastModuleBmp { width: 60px; }
+
+.centered {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+.inputRow {
+	padding-top: 5px;
+	margin: 5px 0 8px 0;	
+	width: 100%;
+	clear: both;
+}
+
+.inputLabel {
+	margin-top:2px;
+	width: 100px;
+	float: left;
+}
+
+.inputBox {
+	width: 125px;
+	margin-right: 3px;
+	text-align: right;
+	border: 1px solid #D8DCE1;
+	float: left;
+}
+
+.inputButton {
+	border: 1px solid #D8DCE1;
+	text-align: center;
+	background: transparent;
+	width: 60px;
+}
+
+.varInputBox {
+	border: 0px;
+	width: 125px;
+ 	margin: 0 0 0 0;
+	text-align: right;
+	float: left;
+}
+
+.varInputButton {
+	border: 0px;
+	text-align: center;
+	background: transparent;
+	width: 40px;
+}
+
+.varInputTd {
+	background: #D8DCE1;
+}
+
+#terminalOutput {
+	margin-top: 5px;
+	width: 100% -2px; /* strange but works for both FF and IE */
+	height: 150px;
+	border: 1px solid #D8DCE1;
+	overflow: auto;
+}
+
+#terminalLabel {
+	text-align: right;
+	float: left;
+	width: 20px;
+	padding-right: 3px;
+	background: #D8DCE1;
+	border-bottom: 1px solid #D8DCE1;
+}
+
+#terminalInput {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 150px;
+	border-top: none;
+	border-left: 1px solid #D8DCE1;
+	border-right: 1px solid #D8DCE1;
+	border-bottom: 1px solid #D8DCE1;
+}
+
+.cpxModulesNav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.cpxModulesNav ul li {
+	margin: 0;
+	padding: 2px 5px 2px 0px;
+	background: transparent;
+	border-bottom: 1px solid #D8DCE1;
+}
+
+.cpxModulesNav ul li a {
+	text-decoration: none;
+}
+
+xmp {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}

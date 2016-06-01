@@ -1,0 +1,1 @@
+.Gas_Pression_Out:INT;.Gas_Pression_Set:INT;.Gas_Switch_Set:BOOL;.Main_Pression_1:WORD;.Main_Pression_2:WORD;.Main_Pression_3:WORD;.Main_Pression_4:WORD;.Main_Pression_5:WORD;.Main_Pression_6:WORD;.Main_Pression_7:WORD;.Main_Pression_8:WORD;.Main_Pression_Out:INT;.Main_Pression_Set:INT;.Stand_Pression:WORD;

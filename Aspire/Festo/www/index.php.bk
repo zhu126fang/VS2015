@@ -1,0 +1,23 @@
+<?php include_once('header.php') ?>
+<body>
+	<div id="title" />
+
+	<div id="main">
+		<h1>CPX-CEC Webserver</h1>
+		<div id="loading">
+			<p class="centered">Loading... please wait.</p>
+			<img src="images/wait_mov.gif" class="centered" />
+		</div>
+	
+		<div id="content">		
+		</div> <!-- content -->
+	
+		<?php include_once('footer.php') ?>
+	</div> <!-- main -->
+	
+
+	
+	<?php include_once('sidebar.php') ?>
+	
+</body>
+</html>

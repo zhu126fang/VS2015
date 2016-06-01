@@ -1,0 +1,44 @@
+.d1 {
+  background-color: #E0E0E0;
+  width: 500px;
+  padding: 10px;
+  border: 2px solid black; 
+  margin: 0px auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.headline {
+  color: blue;
+  background-color: #E0E0E0;
+  width: 500px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 0px auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.disclaimer {
+  color: red;
+  background-color: #E0E0E0;
+  width: 500px;
+  padding: 10px;
+  border: 2px solid red;
+  margin: 0px auto;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.d3 {
+  text-align: center;
+}
+
+.code {
+  background-color: #E0E0E0;
+  color: black;
+  width: 470px;
+  text-align: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}

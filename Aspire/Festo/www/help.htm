@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- Unfortunately this website is not haiku compliant :( -->
+	<head>
+		<meta http-equiv="Content-Type" content="txt/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en" />
+	
+		<title>CPX-CEC</title>
+	
+		<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+		<link rel="stylesheet" href="../layout.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+   </head>
+   <body>
+		<div id="title" />
+		<div id="main">
+			<h1>CPX-CEC Webserver</h1>
+			<div id="content">
+				<div class="sectionHead"><h2>Customizing the CPX-CEC web server</h2></div>
+				<div class="sectionContent">
+					<p>The CPX-CEC web server can easily be modified to your requirements. An example might be to keep some documentation about a machine directly on the device. The recommended way to do this:</p>
+					<ol>
+						<li>Log into the device via telnet</li>
+						<li>Enable the ftp server</li>
+						<li>Download the files to modify</li>
+						<li>Upload user-specific documents</li>
+						<li>Modify downloaded files</li>
+						<li>Re-upload modified files</li>
+					</ol>
+					
+					<h4>Telnet & Ftp</h4>
+					<p>To log onto the device open a DOS shell (Windows + R, open cmd.exe). Then type:<p>
+					<code>telnet DEVICEIP</code>
+					<p>The login is <code>root</code> and the default password is <code>Festo</code>. Once logged in, simply type <code>startftp</code>. Then log out with <code>exit</code>. Now the PLC's file system is accessible with any FTP client. The user and password are the same as for the telnet log in. When uploading documents make sure to put them somewhere in the <code>/ffx/www/</code> to make them accessible for the web server.</p>
+					
+					<h4>What files to modify</h4>
+					<p>The suggested way to link your own files in the existing web interface is in the sidebar of the main page. This is located in <code>/ffx/www/sidebar.php</code>. In order to link your own documents in the sidebar insert a section like the one sampled below:</p>
+<xmp>
+<h3>MySection</h3>
+<div class="sidesection">
+  <ul>
+    <li><a href="path/foo.htm">Documentation</a></li>
+    <li><a href="path/bar.htm">Part list</a></li>
+  </ul>
+</div> <!-- sidesection -->
+</xmp>
+				</div>
+			</div>
+			
+			<div id="footer">
+				<p align="center">&copy;2009 Festo AG & Co. KG</p>
+			</div> <!-- footer -->	
+		</div> <!-- main -->
+			
+		<div id="sidebar">
+			<img id="logo" src="../images/top_logo2.gif" style="margin-bottom: 20px;" />
+		</div>			
+   </body>
+</html>

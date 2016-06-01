@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- Unfortunately this website is not haiku compliant :( -->
+	<head>
+		<meta http-equiv="Content-Type" content="txt/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en" />
+	
+		<title>CPX-CEC</title>
+	
+		<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+		<link rel="stylesheet" href="../layout.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+   </head>
+   <body>
+		<div id="title" />
+		<div id="main">
+			<h1>CPX-CEC Webserver</h1>
+			<div id="content">
+				<div class="sectionHead"><h2>CPX-CEC variable server</h2></div>
+				<div class="sectionContent">
+					<p>The CPX-CEC variable server displays the values of CoDeSys program variables using a web interface.</p>
+					<ul>
+						<li><a href="docu.htm">Usage of the web interface</a></li>
+						<li><a href="docuCoDeSys.htm">Setup in CoDeSys</a></li>
+					</ul>
+					<p></p>
+				</div>
+				<div class="sectionHead"><h2>Setup in CoDeSys</h2></div>
+				<div class="sectionContent">
+					<p>To set up the CPX-CEC variable server in CoDeSys the short story of things that need to be done is:</p>
+					<ol>
+						<li>Add the Festo_CPX.lib.</li>
+						<li>Set up a cyclic call in an IEC task to <code>CPX_VariableServer</code>.</li>
+						<li>Configure the symbol file.</li>
+					</ol>
+					<p>These three steps are documented in more detail below.</p>
+					<h4>1. Adding Festo_CPX.lib</h4>
+					<p>In your CoDeSys project open the tab <i>Ressources</i> in the bottom left of the screen. In the tree view above there will be the <i>Library Manager</i>. Open it and right click anywhere in the list of libraries. Select <i>Additional Library</i> in the right click menu. Open the <i>Festo_CPX.lib</i> in the dialog. By default the standard library directory should be shown (in this case: <i>C:\Program Files\Festo\CoDeSys V2.3\Targets\Festo</i>).</p>
+					<h4>2. Task settings</h4>
+					<p>Open the <i>Task configuration</i> in the <i>Ressources</i> tab. Initially there should be no tasks.</p>
+					<img src="docu/vs_docu4.png" class="docuImage" />
+					<p>Select <i>Append Task</i> twice. One for the main task and one for the variable server task. Then do the following:</p>
+					<ol>
+						<li>Rename the first task i.e. to <i>MainTask</i>.</li>
+						<li>Set the task type to <i>freewheeling</i>.</li>
+						<li>Right click the task and select <i>Append Program Call</i>.</li>
+						<li>Select <i>PLC_PRG();</i>.</li>
+						<li>Rename the second task i.e. to <i>OtherTask</i>.</li>
+						<li>Set the task type to <i>cyclic</i> and interval to around <i>t#500ms</i> or <i>t#1s</i>, depending on how often you want the variable server to update internally.</li>
+						<li>Append a program call to <i>CPX_VariableServer();</i> (note: programs in libraries are not visible in the selection dialogue; the program name has to be typed in manually)</li>
+					</ol>
+					<img src="docu/vs_docu5.png" class="docuImage" />
+					<img src="docu/vs_docu6.png" class="docuImage" />
+					<img src="docu/vs_docu7.png" class="docuImage" />
+					<p>In the end things should look like in the screenshots above. Now download the program and set the PLC to run mode.</p>
+					<h4>3. Symbol file</h4>
+					<p>The symbol file manages what variables will be visible via network. This does not only concern the variable server but also other network based services like OPC et cetera. A short guide on how to configure your symbol file is given here, for more details also see the 3S CoDeSys documentation.</p>
+					<ol>
+						<li>Open <i>Project > Options</i> in the menu bar.</li>
+						<li>Select <i>Symbol configuration</i> in the options dialog.</li>
+						<li>Make sure <i>Dump symbol entries</i> is checked.</li>
+						<li>Select <i>Configure symbol file...</i></li>
+						<li>Mark the POUs whose variables you want in the symbol file and check some of the boxes. (See screenshot below.)</li>
+						<li>Close all dialogues with <i>OK</i>.</li>
+					</ol>
+					<img src="docu/vs_docu8.png" class="docuImage" />
+					<p>Additionally you have make sure the symbol file is downloaded to the PLC. This can be done by opening the <i>General</i> tab on in the <i>Target Settings</i>. There simply check the box <i>Download symbol file</i>.</p>
+					<img src="docu/vs_docu9.png" class="docuImage" />
+					<p>Additional notes: Only IEC base variable types are supported (BOOL, BYTE, DATE, DINT, DT, DWORD, INT, LREAL, LWORD, REAL, SINT, STRING, TIME, TOD, UINT, UDINT, USINT, WORD). Arrays and structs can be displayed as one variable per field/property.</p>
+				</div>
+			</div>
+			
+			<div id="footer">
+				<p align="center">&copy;2009 Festo AG & Co. KG</p>
+			</div> <!-- footer -->	
+		</div> <!-- main -->
+			
+		<div id="sidebar">
+			<img id="logo" src="../images/top_logo2.gif" style="margin-bottom: 20px;" />
+		</div>			
+   </body>
+</html>

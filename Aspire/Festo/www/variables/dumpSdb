@@ -1,0 +1,2 @@
+#!/bin/ash
+hexdump /ffx/codesys/prj/DOWNLOAD.SDB -v -e '8/2 "%04x;"' | sed 's/    ;//g' > DOWNLOAD.SDB

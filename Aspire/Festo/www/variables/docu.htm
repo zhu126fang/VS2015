@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- Unfortunately this website is not haiku compliant :( -->
+	<head>
+		<meta http-equiv="Content-Type" content="txt/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en" />
+	
+		<title>CPX-CEC</title>
+	
+		<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+		<link rel="stylesheet" href="../layout.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
+   </head>
+   <body>
+		<div id="title" />
+		<div id="main">
+			<h1>CPX-CEC Webserver</h1>
+			<div id="content">
+				<div class="sectionHead"><h2>CPX-CEC variable server</h2></div>
+				<div class="sectionContent">
+					<p>The CPX-CEC variable server displays the values of CoDeSys program variables using a web interface.</p>
+					<ul>
+						<li><a href="docu.htm">Usage of the web interface</a></li>
+						<li><a href="docuCoDeSys.htm">Setup in CoDeSys</a></li>
+					</ul>
+					<p></p>
+				</div>
+				<div class="sectionHead"><h2>Usage of the web interface</h2></div>
+				<div class="sectionContent">
+					<p>The interface of the variable server should by default look like in the screenshot below:</p>
+					<img src="docu/vsw_docu1.png" class="docuImage" />
+					<p>Explanation:</p>
+					<ol>
+						<li>Status: Displays the state of the variable server. (See state messages explained below)</li>
+						<li>Interval: Interval in which the variables are polled from the server.</li>
+						<li>Start: Start polling variables and set server to active.</li>
+						<li>Stop: Stop polling variables and set server to inactive.</li>
+						<li>Edit: Configure the list of variables that is being polled from the server.</li>
+						<li>Table: List of variables that is configured to be polled.</li>
+					</ol>
+					<h4>Status information</h4>
+					<p>The variable server displays its state in the field at 1. There are three states:</p>
+					<ul>
+						<li>Not running: The server is not set up on the CoDeSys side or the PLC is in STOP mode. (See: <a href="docuCoDeSys.htm">Setup in CoDeSys</a>)</li>
+						<li>Inactive: The server is set up correctly but currently no values are being polled.</li>
+						<li>Active: The server is set up correctly and values are being polled from it.</li>
+					</ul>
+					<p>If the table just shows <i>No variables are configured</i> at 6, click the <i>Edit</i> button to configure a list of variables to monitor.</p>
+					<h4>Configuring the list of variables</h4>				
+					<p>Upon entering the edit page the symbol file of the PLC is downloaded and parsed. Depending on the size of your symbol file this can take a while. If no symbol file is found or the symbol file is empty an error message will be displayed.</p>
+					<img src="docu/vsw_docu2.png" class="docuImage" />
+					<p>Explanation:</p>
+					<ol>
+						<li>Search: Applies a filter to the variables listed in the table below.</li>
+						<li>Mark all/none: Checks the check boxes for each variable currently listed in the table.</li>
+						<li>Table: List of variables in the symbol file.</li>
+						<li>Check: Displays how many variables have been marked.</li>
+						<li>Apply: Write the selection of variables to the PLC as a configuration file.</li>
+						<li>Cancel: Return to the regular web server page without writing a configuration file.</li>
+					</ol>
+				</div>
+			</div>
+			
+			<div id="footer">
+				<p align="center">&copy;2009 Festo AG & Co. KG</p>
+			</div> <!-- footer -->	
+		</div> <!-- main -->
+			
+		<div id="sidebar">
+			<img id="logo" src="../images/top_logo2.gif" style="margin-bottom: 20px;" />
+		</div>			
+   </body>
+</html>

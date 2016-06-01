@@ -1,0 +1,224 @@
+/* General */
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #FFF;
+	color: #000;
+	font-family: Arial, Geneva, Helvetica, sans-serif;
+	font-size: 13px;
+	background-image: url(images/back_right.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	/*overflow: auto;*/
+}
+
+/* Sections & boxes */
+#title {
+   margin: 0px 0px 0px 0px;
+	background-image: url('images/top_1.gif') ;
+	background-repeat: repeat-x;
+	background-position: left top;
+	height: 35px;
+}
+	
+#main {
+   position: absolute;
+   top: 35px;
+   right: 185px;
+   bottom: 25px;
+   padding: 0;
+   height: 100%;
+	width: 600px;
+   margin: 0;
+   background: transparent;   
+}
+
+#content, #footer, #loading {
+   float: center;
+   margin: 0 0 0 0;
+	width: 100%;
+	padding: 20px 0 0 0;
+}
+
+#footer {
+	margin-top: 25px;
+	padding: 0;
+   color: #000;
+   text-align: left;
+}
+
+.section {
+   color: #222;
+   background: #fff;
+	padding-bottom: 20px;
+}
+
+.sectionHead {
+	height: 18px;
+	padding: 2px 0 0 2px;
+	background-color: #D8DCE1;
+}
+
+.sectionContent {
+	clear: both;
+}
+
+#sidebar {
+	position: absolute;
+	top: 0px;
+	right: 1px;      
+	margin: 0px;
+	padding: 0px;
+	border: 0px solid #000000;
+	width: 184px;
+}
+
+.sidesection {
+    border: 0px solid #000;
+    color: #000000;
+    padding: 4px;
+    margin: 0px 0px 15px 60px;
+}
+
+/* Headings */
+
+h1 {
+	font-size: 19px;
+	font-weight: bold;
+	text-align: right;
+	margin: 35px 0 0 0;
+	padding: 0 0 0 0; 
+}
+
+h1 a { text-decoration: none; }
+h1 a:link, h1 a:visited {
+	font-size: 19px;
+	font-weight: bold;
+	margin: 0;
+   color: #000;
+}
+
+h2 {
+   margin: 0px 0px 5px 0px;
+   padding: 0px;
+   font-size: 13px;
+   font-family: Arial, Geneva, Helvetica, sans-serif;
+	float: left;
+}
+
+h2 a { font-size: 13px; }
+h2 a:link { color: #000000; text-decoration: none; }
+h2 a:visited { color: #000000; text-decoration: none; }
+h2 a:hover { color: #000000; text-decoration: underline; }
+h2 a:active { color: #000000; text-decoration: underline; }
+
+h3 {
+   font-size: 13px;
+   color: #000;
+   padding: 2px;
+   margin: 0px 0px 0px 60px;
+}
+
+h4 {
+	border-bottom: 1px solid #D8DCE1;
+   font-size: 13px;
+   color: #000;
+   padding: 2px;
+   margin: 10px 0px 0px 0px;
+}
+
+h5 {
+   font-size: 13px;
+   color: #000;
+   padding: 2px;
+   margin: 10px 0px 0px 0px;
+}
+
+img {
+   border-style: none;
+}
+
+.docuImage {
+	margin: 10px 0 0 2px;
+}
+
+.closeImage {
+	padding: 4px 4px 0 0;
+	width: 9px;
+	float: right;
+}
+
+.images {
+   padding: 2px;
+   background: transparent;
+   border: none;
+}
+
+/* Text & lists*/
+p {
+    font-family: Arial, Geneva, Helvetica, sans-serif;
+    font-size: 13px;
+    margin: 0px 0px 0px 0px;
+    padding: 2px;
+}
+
+a {
+    color: #000;
+    font-size: 13px;
+    font-family: Arial, Geneva, Helvetica, sans-serif;
+    text-decoration: underline;
+}
+
+a :link    { color: #000000; text-decoration: underline; }
+a :visited { color: #000000; text-decoration: underline; }     
+a :hover   { color: #666666; text-decoration: underline; }
+ol {
+	margin: 0 0 0 0;
+}
+.content>p {margin: 0px;}
+.content>p+p {text-indent: 30px;}
+.content p {margin-bottom: .5em; }
+
+.content ul, .sidesection ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.sidesection ul li {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidesection ul li ul li {
+	list-style-type: none;
+	padding-left: 10px;
+	background-image: url(images/dot_ie.gif);
+	background-position: 0 .2em;
+	background-repeat: no-repeat;
+}
+
+.section ul li {
+	list-style-type: none;
+	padding-left: 12px;
+	background-image: url(images/dot_ie.gif);
+	background-position: 0 .2em;
+	background-repeat: no-repeat;
+}
+
+.section ul li ul li {
+	list-style-type: none;
+	padding-left: 12px;
+	background-image: url(images/dot_ie.gif);
+	background-position: 0 .2em;
+	background-repeat: no-repeat;
+}
+
+#sidebar a:link { color: #000000; text-decoration: none;}
+#sidebar a:visited { color: #000000; text-decoration: none;}
+#sidebar a:hover { color: #666666; text-decoration: underline;}
+
+#footer, #footer p, #footer p a {
+	font-size: 10px;
+}
