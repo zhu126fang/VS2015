@@ -23,10 +23,10 @@
 7. Others</p> 
 8. Scan_Port</p> 
 9. Screen1</p> 
-10.Screenshot</p> 
-11.Study</p> 
-12.telnet_clinet</p> 
-13.Tool</p> 
+10. Screenshot</p> 
+11. Study</p> 
+12. telnet_clinet</p> 
+13. Tool</p> 
 
 
 
