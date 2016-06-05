@@ -18,6 +18,8 @@ C#操作Excel总结:http://www.cnblogs.com/wang_yb/articles/1750419.html</p>
 ##Curl
 ##DDE
 ##Excel
+电脑需要安装Office2007,但不能安装WPS。
+安装WPS后,程序会执行失败。
 ##FileEventWatcher
 ##KillProcess
 ##Login
