@@ -17,6 +17,8 @@
 1. Curl</p> 
 2. DDE</p> 
 3. Excel</p> 
+！！！不能安装WPS,需要安装Office2007
+以后可以解决对版本的依赖。
 4. FileEventWatcher</p> 
 5. KillProcess</p> 
 6. Login</p> 
