@@ -15,7 +15,8 @@ namespace CURLDemo
 				Easy easy = new Easy();
 				Easy.WriteFunction wf = new Easy.WriteFunction(OnWriteData);
 
-				easy.SetOpt(CURLoption.CURLOPT_URL, "http://www.baidu.com");
+				easy.SetOpt(CURLoption.CURLOPT_URL, "https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes=ADULT&queryDate=2016-06-07&from_station=BJP&to_station=AOH");
+
 				easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
 				easy.Perform();
 				easy.Cleanup();

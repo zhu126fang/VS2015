@@ -24,8 +24,8 @@ namespace CURLDemo
                 //easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, "cmd=0");
 
                 /////获取实时数据
-                easy.SetOpt(CURLoption.CURLOPT_URL, "http://192.168.2.50/variables/mnt/symbols");
-
+                //easy.SetOpt(CURLoption.CURLOPT_URL, "http://192.168.2.50/variables/mnt/symbols");
+                
                 //设定主机箱压力为500Kpa
                 //easy.SetOpt(CURLoption.CURLOPT_URL, "http://192.168.2.50/variables/write.php");
                 //easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, "set=.Main_Pression_Set%3AINT%3D5000%3B&cmd=3");
@@ -34,6 +34,10 @@ namespace CURLDemo
                 //easy.SetOpt(CURLoption.CURLOPT_URL, "http://192.168.2.50/variables/write.php");
                 //easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, "set=.Main_Pression_Set%3AINT%3D0%3B&cmd=3");
 
+                //
+                easy.SetOpt(CURLoption.CURLOPT_URL, "https://kyfw.12306.cn/otn/lcxxcx/query");
+                easy.SetOpt(CURLoption.CURLOPT_POSTFIELDS, "purpose_codes=ADULT&queryDate=2016-06-07&from_station=BJP&to_station=AOH");
+
                 easy.SetOpt(CURLoption.CURLOPT_WRITEFUNCTION, wf);
 				easy.Perform();
 				easy.Cleanup();
@@ -41,9 +45,11 @@ namespace CURLDemo
 				Curl.GlobalCleanup();
 
 			} catch(Exception ex) {
-				Console.WriteLine(ex);
+
+				Console.WriteLine("ERR");
 			}
-			Console.ReadKey();
+            Console.WriteLine("Fin");
+            Console.ReadKey();
 		}
 
 		public static Int32 OnWriteData(Byte[] buf, Int32 size, Int32 nmemb, Object extraData)
