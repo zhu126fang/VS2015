@@ -33,11 +33,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(85, 139);
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(92, 166);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 61);
+            this.button1.Size = new System.Drawing.Size(100, 40);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "打开Excel";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
