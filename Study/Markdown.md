@@ -1,0 +1,19 @@
+###Markdown
+
+[Markdownpad下载](http://www.markdownpad.com/)  
+
+[Notepad++的markdown插件--未找到下载地址](http://blog.gclxry.com/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAnotepad%E7%9A%84markdown%E6%8F%92%E4%BB%B6)  
+
+[Notepad++配置Markdown实时预览--未配置成功](http://www.annhe.net/article-3271.html)  
+
+[http://wowubuntu.com/markdown/](http://wowubuntu.com/markdown/ "Markdown 语法说明 (简体中文版)")  
+
+[github.com/younghz](https://github.com/younghz/Markdown)  
+
+[好用的Markdown编辑器一览](http://www.williamlong.info/archives/4319.html)  
+
+[Markdown-引领未来科技写作的博客利器](http://mux.alimama.com/posts/620)  
+
+
+
+
