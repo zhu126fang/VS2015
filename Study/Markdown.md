@@ -19,7 +19,16 @@
 [Notepad++配置Markdown实时预览--未配置成功](http://www.annhe.net/article-3271.html)   
 
 
+###5. 入门
+[Markdown——入门指南](http://www.jianshu.com/p/1e402922ee32/)
 
+
+###6. Others
+[pro版-破解方法](http://www.cnblogs.com/hazir/p/unlocking_markdownpad2.html)  
+   
+```html
+<script src="raphael-min.js"></script>
+```
 
 
 
