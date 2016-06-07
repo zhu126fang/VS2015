@@ -2,6 +2,8 @@
 ###1. 工具
 [Markdownpad下载](http://www.markdownpad.com/)  
 
+[Markdown在线编辑](http://dillinger.io/)
+
 [好用的Markdown编辑器一览](http://www.williamlong.info/archives/4319.html)  
 
 [Markdown-引领未来科技写作的博客利器](http://mux.alimama.com/posts/620)
