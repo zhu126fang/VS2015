@@ -39,6 +39,8 @@ namespace FileName_Rename
 
         private void button2_Click(object sender, EventArgs e)
         {
+            files = Directory.GetFiles(FilePath);                  //路径下所有文件
+
             foreach (String filename in files)
             {
                 int lastpath = filename.LastIndexOf("\\");                                                 // 最后一个"\"               
@@ -50,7 +52,7 @@ namespace FileName_Rename
 
                 String namenew;
                 Rename = textBox2.Text;
-                namenew = namenoext.Replace(Rename, "");
+                namenew = namenoext.Replace(Rename, textBox3.Text);
 
                 String fullnewname = beginpart + namenew + ext;
                 // 改名
