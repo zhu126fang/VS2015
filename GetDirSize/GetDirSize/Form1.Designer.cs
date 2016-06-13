@@ -28,32 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // listView1
             // 
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(677, 238);
+            this.listView1.Size = new System.Drawing.Size(677, 199);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(26, 227);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 40);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "开始统计";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(167, 238);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 3;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 262);
+            this.ClientSize = new System.Drawing.Size(701, 279);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
