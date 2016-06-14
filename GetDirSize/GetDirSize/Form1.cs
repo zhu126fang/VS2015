@@ -40,21 +40,21 @@ namespace GetDirSize
             //this.listBox1.Items.Add(fso.GetFolder(@"D:\Program Files").Size.ToString());
 
             // 遍历出当前目录的所有文件夹.
-            DirectoryInfo d = new DirectoryInfo(@"..");   //绑定到当前的应用程序目录
+            DirectoryInfo d = new DirectoryInfo(@"C:\");   //绑定到当前的应用程序目录
             DirectoryInfo[] dis = d.GetDirectories();
 
             int j = 0;            
             foreach (DirectoryInfo di in dis)
             {
-                if (di.Attributes.ToString().IndexOf("Hidden")< 0)
+                if (di.Attributes.ToString().IndexOf("Hidden")< 0 )
                 {
                     j++;
                     ListViewItem cj;                
 
                     cj = new ListViewItem(j.ToString());
                     cj.SubItems.Add(di.Name);
-                    double d11 = Convert.ToDouble(fso.GetFolder(di.FullName).Size.ToString());
-                    cj.SubItems.Add(d11.ToString("N"));
+                    //double d11 = Convert.ToDouble(fso.GetFolder(di.FullName).Size.ToString());
+                    //cj.SubItems.Add(d11.ToString("N"));
                     listView1.Items.Add(cj);
                 }
             }
