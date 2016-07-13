@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTextDemo", "iTextDemo\iTextDemo.csproj", "{12E0ADB7-8893-4E88-81D1-A1831090CEBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12E0ADB7-8893-4E88-81D1-A1831090CEBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12E0ADB7-8893-4E88-81D1-A1831090CEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12E0ADB7-8893-4E88-81D1-A1831090CEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12E0ADB7-8893-4E88-81D1-A1831090CEBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
