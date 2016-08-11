@@ -39,9 +39,11 @@ namespace Screenshot
             string strHMS = currentTime.ToString("HHmmss");
             string path1 = @"D:\Report";
             string path2 = @"D:\Report\" + strYMD;
+            string path3 = @"D:\Report\" + strYMD + @"\PIC";
             if (!Directory.Exists(path1)) Directory.CreateDirectory(path1);
             if (!Directory.Exists(path2)) Directory.CreateDirectory(path2);
-            string filename = @"D:\Report\" + strYMD + @"\" + strYMD + "_" + strHMS + ".jpg";
+            if (!Directory.Exists(path3)) Directory.CreateDirectory(path3);
+            string filename = @"D:\Report\" + strYMD + @"\PIC\" + strYMD + "_" + strHMS + ".jpg";
 
             //Thread.Sleep(10000);
 
