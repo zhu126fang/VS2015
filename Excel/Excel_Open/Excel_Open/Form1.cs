@@ -20,21 +20,22 @@ namespace Excel_Open
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
             Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
             Workbooks wbks = app.Workbooks;
             try
             {
-                _Workbook _wbk = wbks.Add(true);
-                app.Visible = true;
+                //_Workbook _wbk = wbks.Add(true);
+                _Workbook _wbk = wbks.Open("D:\\Francis\\AEF\\HZL1\\HZL1\\HZL1.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                app.Visible = false;        //不在任务栏显示Excel
             }
             catch
             {
-                MessageBox.Show("新建文件失败");
+                MessageBox.Show("打开文件失败");
             }
+
+            //打开后退出，否则打开的Excel无法正常关闭
+            System.Environment.Exit(0);
         }
     }
 }
