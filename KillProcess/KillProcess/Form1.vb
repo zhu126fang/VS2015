@@ -17,8 +17,9 @@
                 Dim inst As Process
                 Dim myProcess() As Process
 
-                '查找并关闭进程
-                myProcess = System.Diagnostics.Process.GetProcessesByName("excel")
+        '查找并关闭进程
+        '可以正常关闭所有Excel进程，但会有文档恢复提示
+        myProcess = System.Diagnostics.Process.GetProcessesByName("excel")
                 For Each inst In myProcess
                         p = System.Diagnostics.Process.GetProcessById(inst.Id)
                         p.Kill()
